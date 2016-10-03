@@ -63,7 +63,6 @@
     <script src="lib/underscore.js"></script>
     <script src="js/mapper.js"></script>
     <script>
-      /*globals d3:false */
       /*jshint strict:false */
       
 
@@ -77,7 +76,7 @@
         mpr
           .addValuesToMap('isfrom')
           .setFilter(function (row, a, b) {
-            return (row.isfrom === a.name && row.goesto === b.name)
+            return (row.isfrom === a.name && row.goesto === b.name);
           })
           .setAccessor(function (recs, a, b) {
             if (!recs[0]) return 0;
@@ -148,9 +147,7 @@
             .style("font-size", "10px")
             .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
             .attr("transform", function(d) {
-              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-                  + "translate(" + (r0 + 36) + ")"
-                  + (d.angle > Math.PI ? "rotate(180)" : "");
+              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" + "translate(" + (r0 + 36) + ")" + (d.angle > Math.PI ? "rotate(180)" : "");
             })
             .text(function(d) { return rdr(d).gname; });
 
@@ -170,8 +167,8 @@
                   d3.select("#tooltip")
                     .style("visibility", "visible")
                     .html(chordTip(rdr(d)))
-                    .style("top", function () { return (d3.event.pageY + 50)+"px"})
-                    .style("left", function () { return (d3.event.pageX - 130)+"px";})
+                    .style("top", function () { return (d3.event.pageY + 50)+"px";})
+                    .style("left", function () { return (d3.event.pageX - 130)+"px";});
                 })
                 .on("mouseout", function (d) { 
                   d3.select(this)
@@ -184,18 +181,13 @@
                   });
 
           function chordTip (d) {
-            var p = d3.format(".2%")
-            return "Relationship<br/>"
-              + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue
-              + (d.sname === d.tname ? "": ("<br/>"
-              + d.sname + " &leftarrow; " + d.tname + " : " + d.tvalue))
+            var p = d3.format(".2%");
+            return "Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + (d.sname === d.tname ? "": ("<br/>" + d.sname + " &leftarrow; " +d.tname + " : " + d.tvalue));
           }
 
           function groupTip (d) {
-            var p = d3.format(".1%"), q = d3.format(",.3r")
-            return d.gname + " Stats:<br/>"
-                + q(d.gvalue) + " citizens are in prison abroad." + "<br/>"
-                + "This represents " + p(d.gvalue/d.mtotal) + " of total " + q(d.mtotal) +" imprisoned diaspora across the EU."
+            var p = d3.format(".1%"), q = d3.format(",.3r");
+            return d.gname + " Stats:<br/>" + q(d.gvalue) + " citizens are in prison abroad." + "<br/>" + "This represents " + p(d.gvalue/d.mtotal) + " of total " + q(d.mtotal) +" imprisoned diaspora across the EU.";
           }
 
           function mouseover(d, i) {
@@ -203,8 +195,9 @@
               .style("opacity", 0)
               .style("visibility", "visible")
               .html(groupTip(rdr(d)))
-              .style("top", function () { return (d3.event.pageY + 50)+"px"})
-              .style("left", function () { return (d3.event.pageX - 130)+"px";})
+              .style("top", function () { return (d3.event.pageY + 50)+"px";})
+              .style("left", function () { return (d3.event.pageX - 130)+"px";});
+
             d3.select("#tooltip")
               .transition()
               .duration(400)
@@ -212,15 +205,8 @@
                 .style("opacity", 0.8);
 
              chordPaths.classed("fade", function(p) {
-               return p.source.index != i
-                   && p.target.index != i;
+               return p.source.index != i && p.target.index != i;
              });
-
-             // d3.selectAll(".fade")
-             //   .transition()
-             //   .duration(350)
-             //   .ease("cubic")
-             //      .style("opacity", 0);
           }
       }
     </script>
