@@ -47,7 +47,7 @@
         stroke-width: .25px;
       }
       #circle:hover path.fade {
-        /*display: none;*/
+        display: none;
       }
     </style>
   </head>
@@ -216,11 +216,11 @@
                    && p.target.index != i;
              });
 
-             d3.selectAll(".fade")
-               .transition()
-               .duration(350)
-               .ease("cubic")
-                  .style("opacity", 0);
+             // d3.selectAll(".fade")
+             //   .transition()
+             //   .duration(350)
+             //   .ease("cubic")
+             //      .style("opacity", 0);
           }
       }
     </script>
