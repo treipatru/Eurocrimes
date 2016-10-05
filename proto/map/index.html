@@ -4,34 +4,83 @@
   #map {
   	margin-bottom: 0 auto;
 
-      }
-  </style>
-<body>
-<div id="map"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-<script>
-(function() {
-  var center, countries, height, path, projection, scale, svg, width;
-  width = 800;
-  height = 800;
-  center = [10, 68];
-  scale = 600;
-  projection = d3.geo.mercator().scale(scale).translate([width / 2, 0]).center(center);
-  path = d3.geo.path().projection(projection);
-  svg = d3.select("#map").append("svg").attr("height", height).attr("width", width);
-  countries = svg.append("g");
-  d3.json("./data/map.json", function(data) {
-    countries.selectAll('.country')
-    .data(topojson.feature(data, data.objects.europe).features)
-    .enter()
-    .append('path')
-    .attr('class', 'country')
-    .attr('d', path);
-    return;
-  });
-}).call(this);
-</script>
-</body>
+  }
+  .country{
+    fill: #28454f;
+    stroke: #878787;
+  }
+
+  .euMember {
+    fill: #003cb3;
+    stroke: #878787;
+  }
+</style>
+  <body>
+    <div id="map"></div>
+    <div id="container"><p id="tooltip"></p></div>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+    <script>
+
+    //CALL FUNCTIONS ON WINDOW LOAD
+    window.onload = init();
+
+    function init (){
+      console.log("primed and ready to bork");
+      drawMap();
+    }
+
+    function drawMap () {
+
+      var center, countries, height, path, projection, scale, svg, width, mapData;
+      width = 900;
+      height = 700;
+      center = [18,68];
+      scale = 700;
+      projection = d3.geo.mercator().scale(scale).translate([width / 2, 0]).center(center);
+      path = d3.geo.path().projection(projection);
+      svg = d3.select("#map").append("svg").attr("height", height).attr("width", width);
+      countries = svg.append("g");
+
+
+      //IMPORT DATA AND DRAW THE MAP
+      d3.json("./data/map.json", function(data) {
+        countries.selectAll(".country")
+          .data(topojson.feature(data, data.objects.collection).features)
+          .enter()
+          .append("path")
+          .attr("class","country")
+          .attr("d", path)
+          .attr("id", function (d) {return d.properties.NAME;})
+          // .text(function (d) {return d.properties.NAME;})
+          .filter(function (d) {if (d.properties.EU_MEMBER === true) {return d;}})
+            .attr("class", "country euMember")
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout);
+      });
+
+
+
+      //MOUSE EVENTS
+    function mouseover (){
+      var currentSelection = d3.select(this);
+      var currentName = currentSelection.attr("id");
+        //Styling
+      currentSelection.style("fill", "#648fc3");
+      
+      d3.select("#tooltip").text(currentName);
+
+
+    }
+
+    function mouseout() {
+      d3.select(this)
+      .style("fill", "#003cb3");
+    }
+
+    }
+
+    </script>
+  </body>
 </html>
