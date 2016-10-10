@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-  #map {
-  	margin-bottom: 0 auto;
+  @import 'https://fonts.googleapis.com/css?family=Roboto';
 
+  body {
+    padding-top: 10px;
+    margin: 0 auto;
+    width: 90%;
+    background: #d6d6d6;
+  }
+  #map {
+    margin: 0 auto;
+    width: 900px;
+    border: white solid 2px;
+    background: white;
+    box-shadow: 0px 5px 5px #b5b5b5;
+  }
+  #container{
+    margin: 0 auto;
+    width: 900px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
   }
   .country{
     fill: #28454f;
@@ -15,13 +33,13 @@
     stroke: #878787;
   }
 </style>
-  <body>
-    <div id="map"></div>
-    <div id="container"><p id="tooltip"></p></div>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://d3js.org/topojson.v1.min.js"></script>
+<body>
+  <div id="map"></div>
+  <div id="container"><p id="tooltip"></p></div>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
 
-    <script>
+  <script>
 
     //CALL FUNCTIONS ON WINDOW LOAD
     window.onload = init();
@@ -47,29 +65,28 @@
       //IMPORT DATA AND DRAW THE MAP
       d3.json("./data/map.json", function(data) {
         countries.selectAll(".country")
-          .data(topojson.feature(data, data.objects.collection).features)
-          .enter()
-          .append("path")
-          .attr("class","country")
-          .attr("d", path)
-          .attr("id", function (d) {return d.properties.NAME;})
-          // .text(function (d) {return d.properties.NAME;})
-          .filter(function (d) {if (d.properties.EU_MEMBER === true) {return d;}})
-            .attr("class", "country euMember")
-            .on("mouseover", mouseover)
-            .on("mouseout", mouseout);
-      });
+        .data(topojson.feature(data, data.objects.collection).features)
+        .enter()
+        .append("path")
+        .attr("class","country")
+        .attr("d", path)
+        .attr("id", function (d) {return d.properties.NAME;})
+          .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
+          .attr("class", "country euMember")
+          .on("mouseover", mouseover)
+          .on("mouseout", mouseout);
+        });
 
 
 
       //MOUSE EVENTS
-    function mouseover (){
-      var currentSelection = d3.select(this);
-      var currentName = currentSelection.attr("id");
-        //Styling
+      function mouseover (){
+        var currentSelection = d3.select(this);
+
+      //Styling
       currentSelection.style("fill", "#648fc3");
-      
-      d3.select("#tooltip").text(currentName);
+      //Show the ID
+      d3.select("#tooltip").text(currentSelection.attr("id"));
 
 
     }
@@ -77,10 +94,11 @@
     function mouseout() {
       d3.select(this)
       .style("fill", "#003cb3");
+      d3.select("#tooltip").text("");
     }
 
-    }
+  }
 
-    </script>
-  </body>
+</script>
+</body>
 </html>
