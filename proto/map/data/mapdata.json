@@ -1,0 +1,5 @@
+{
+  "Austria": {"Belgium": 600, "Bulgaria": 200, "Croatia": 300},
+  "Belgium": {"Austria": 100, "Bulgaria": 400, "Croatia": 300},
+  "Germany": { "Austria": 300, "Bulgaria": 500, "Croatia": 800}
+}
