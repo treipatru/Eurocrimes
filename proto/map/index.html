@@ -72,10 +72,24 @@
         .attr("d", path)
         .attr("id", function (d) {return d.properties.NAME;})
           .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
-          .attr("class", "country euMember")
+          .attr("class", "euMember")
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
         });
+
+      //IMPORT DIASPORA DATA AND ASSIGN TO COUNTRIES
+      d3.json('./data/mapdata.json', function (data) {
+        var diasporaNumbers = data;
+
+        for (var key in diasporaNumbers){
+          if (diasporaNumbers.hasOwnProperty(key)){
+            //MAKE SELECTION AND UPDATE DATA
+            d3.select("#" + key).datum(function(d){
+              d.diaspora = diasporaNumbers[key]; 
+              return d;});
+          }
+        }
+      });
 
 
 
