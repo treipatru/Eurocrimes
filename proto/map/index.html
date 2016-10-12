@@ -28,16 +28,23 @@
     stroke: #878787;
   }
 
-  .euMember {
+  .countryEU {
     fill: #003cb3;
+    stroke: #878787;
+  }
+  .countryActive {
+    fill: red;
     stroke: #878787;
   }
 </style>
 <body>
   <div id="map"></div>
-  <div id="container"><p id="tooltip"></p></div>
+  <div id="container">
+    <p id="tooltip"></p>
+    <p id="population"></p>
+  </div>
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.20/topojson.min.js"></script>
 
   <script>
 
@@ -72,9 +79,10 @@
         .attr("d", path)
         .attr("id", function (d) {return d.properties.NAME;})
           .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
-          .attr("class", "euMember")
+          .attr("class", "countryEU")
           .on("mouseover", mouseover)
-          .on("mouseout", mouseout);
+          .on("mouseout", mouseout)
+          .on("click", onClick);
         });
 
       //IMPORT DIASPORA DATA AND ASSIGN TO COUNTRIES
@@ -83,7 +91,7 @@
 
         for (var key in diasporaNumbers){
           if (diasporaNumbers.hasOwnProperty(key)){
-            //MAKE SELECTION AND UPDATE DATA
+            //MAKE SELECTION AND UPDATE DATA (UPDATE WHEN INTEGRATING)
             d3.select("#" + key).datum(function(d){
               d.diaspora = diasporaNumbers[key]; 
               return d;});
@@ -97,20 +105,36 @@
       function mouseover (){
         var currentSelection = d3.select(this);
 
-      //Styling
-      currentSelection.style("fill", "#648fc3");
-      //Show the ID
-      d3.select("#tooltip").text(currentSelection.attr("id"));
-
-
+        if (currentSelection.classed("countryActive")){
+        }else {
+        }
+        currentSelection.style("opacity","0.8");
+        d3.select("#tooltip")
+        .text(currentSelection.attr("id"));
     }
 
     function mouseout() {
-      d3.select(this)
-      .style("fill", "#003cb3");
+      var currentSelection = d3.select(this);
+
+      if (currentSelection.classed("countryActive")){
+        currentSelection.style("opacity","1");
+      }else {
+        d3.select(this).attr("class", "countryEU");  
+        currentSelection.style("opacity","1");
+      }
       d3.select("#tooltip").text("");
+      d3.select("#population").text("");
     }
 
+    function onClick() {
+      //DESELECT ACTIVE COUNTRY
+      d3.select(".countryActive").attr("class","countryEU");
+      //SET THIS AS TRUE SELECTED
+      d3.select(this).attr("class", "countryActive");
+      //DEBUG
+      console.log(d3.select(this).attr("id") + " is " + d3.select(this).attr("class"));
+
+    }
   }
 
 </script>
