@@ -127,12 +127,14 @@
     }
 
     function onClick() {
-      //DESELECT ACTIVE COUNTRY
-      d3.select(".countryActive").attr("class","countryEU");
-      //SET THIS AS TRUE SELECTED
-      d3.select(this).attr("class", "countryActive");
-      //DEBUG
-      console.log(d3.select(this).attr("id") + " is " + d3.select(this).attr("class"));
+      var initialClass = d3.select("#"+this.id).attr("class");
+      //IF ALREADY ACTIVE DISABLE ELSE MAKE ACTIVE
+      if (initialClass === "countryActive"){
+        d3.select(this).attr("class", "countryEU");
+      }else {
+        d3.select(".countryActive").attr("class","countryEU");
+        d3.select(this).attr("class", "countryActive");
+      }
 
     }
   }
