@@ -26,22 +26,21 @@
         .on("mouseover", mouseover)
         .on("mouseout", mouseout)
         .on("click", onClick);
-      });
 
-      //IMPORT DIASPORA DATA AND ASSIGN TO COUNTRIES
+      //IMPORT SECONDARY DIASPORA DATA AND ASSIGN TO COUNTRIES
       d3.json('./data/mapdata.json', function (data) {
         var diasporaNumbers = data;
 
         for (var key in diasporaNumbers){
           if (diasporaNumbers.hasOwnProperty(key)){
-            //MAKE SELECTION AND UPDATE DATA (UPDATE WHEN INTEGRATING)
-            d3.select("#" + key).datum(function(d){
-              d.diaspora = diasporaNumbers[key]; 
-              return d;});
-          }
+          //MAKE SELECTION AND UPDATE DATA
+          d3.select("#" + key).datum(function(d){
+            d.diaspora = diasporaNumbers[key]; 
+            return d;});
         }
-      });
-
+      }
+    });
+    });
 
 
       //MOUSE EVENTS
@@ -70,7 +69,6 @@
         d3.select("#tooltip").
         style("visibility", "hidden");
       }
-
 
 
     function onClick() {
