@@ -418,16 +418,8 @@ there.
 @media (min-width: 1200px) {}
 
 
-
-/* CHORD DIAGRAM
+/* TOOLTIP
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-#chordDiagram {
-  display: block;
-  margin: 0 auto;
-}
-#chordInfo {
-  border-top: solid 1px black;
-}
 #tooltip {
   color: white;
   opacity: .9;
@@ -442,6 +434,21 @@ there.
   white-space: nowrap;
   pointer-events: none;
 }
+
+#tooltip p{
+  margin: 0;
+}
+
+/* CHORD DIAGRAM
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#chordDiagram {
+  display: block;
+  margin: 0 auto;
+}
+#chordInfo {
+  border-top: solid 1px black;
+}
+
 #circle circle {
   fill: none;
   pointer-events: all;
