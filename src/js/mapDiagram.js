@@ -1,5 +1,7 @@
     function drawMap () {
 
+      var easingDuration = 750;
+
       var center, countries, height, path, projection, scale, svg, width, mapData;
       width = 960;
       height = 600;
@@ -76,16 +78,16 @@
       //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
       if (initialClass === "countryActive"){
         d3.select(this).attr("class", "countryEU");
-        d3.selectAll(".countryEU").style("fill", "#003cb3");
+        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#003cb3");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
       }else {
         //SET THIS AS ACTIVE COUNTRY
-        d3.selectAll(".countryEU").style("fill", "#003cb3");
+        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#003cb3");
         d3.select(".countryActive").attr("class","countryEU");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
-        d3.select(this).attr("class", "countryActive").style("fill","red");
+        d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","yellow");
 
         //SET SOME VARIABLES
         var activeCountry = this.id;console.log(activeCountry + " is active");
@@ -138,7 +140,10 @@
           .range(["#000083", "#EC0000"]);
 
           d3.selectAll("#" + restEuData[i].host)
-          .style("fill", color(diasporaPercentage));
+            .transition()
+            .duration(easingDuration)
+            .ease("cubic")
+            .style("fill", color(diasporaPercentage));
         }
       }
     }
