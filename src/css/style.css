@@ -65,13 +65,13 @@
   .three.columns                  { width: 22%;            }
   .four.columns                   { width: 30.6666666667%; }
   .five.columns                   { width: 39.3333333333%; }
-  .six.columns                    { width: 48%;            }
+  .six.columns                    { width: 48%; margin-bottom: 3%;}
   .seven.columns                  { width: 56.6666666667%; }
   .eight.columns                  { width: 65.3333333333%; }
   .nine.columns                   { width: 74.0%;          }
   .ten.columns                    { width: 82.6666666667%; }
   .eleven.columns                 { width: 91.3333333333%; }
-  .twelve.columns                 { width: 100%; margin-left: 0; }
+  .twelve.columns                 { width: 100%; margin-left: 0; margin-bottom: 3%;}
 
   .one-third.column               { width: 30.6666666667%; }
   .two-thirds.column              { width: 65.3333333333%; }
@@ -124,7 +124,7 @@ body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
 
 
@@ -418,6 +418,20 @@ there.
 @media (min-width: 1200px) {}
 
 
+#pageTitle {
+  margin-top: 7%;
+  padding-bottom: 1%;
+  border-bottom: 10px solid #067A88;
+}
+
+p {
+  text-align: justify;
+}
+
+#expatsImprisoned {
+  border-bottom: 3px solid #067A88;
+}
+
 /* TOOLTIP
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #tooltip {
@@ -438,6 +452,7 @@ there.
 #tooltip p{
   margin: 0;
 }
+
 
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -489,6 +504,6 @@ path.chord {
   stroke: #878787;
 }
 .countryActive {
-  fill: red;
+  fill: yellow;
   stroke: #878787;
 }
