@@ -78,16 +78,16 @@
       //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
       if (initialClass === "countryActive"){
         d3.select(this).attr("class", "countryEU");
-        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#003cb3");
+        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
       }else {
         //SET THIS AS ACTIVE COUNTRY
-        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#003cb3");
+        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.select(".countryActive").attr("class","countryEU");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
-        d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","yellow");
+        d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","#F47F5E");
 
         //SET SOME VARIABLES
         var activeCountry = this.id;console.log(activeCountry + " is active");
@@ -136,8 +136,8 @@
 
           //CHANGE FILL COLOR BASED ON DIASPORA POPULATION
           var color = d3.scale.linear()
-          .domain([5, 55])
-          .range(["#000083", "#EC0000"]);
+          .domain([5, 15, 55])
+          .range(['#6baed6','#3182bd','#08519c']);
 
           d3.selectAll("#" + restEuData[i].host)
             .transition()
