@@ -76,14 +76,16 @@
       //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
       if (initialClass === "countryActive"){
         d3.select(this).attr("class", "countryEU");
+        d3.selectAll(".countryEU").style("fill", "#003cb3");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
       }else {
         //SET THIS AS ACTIVE COUNTRY
+        d3.selectAll(".countryEU").style("fill", "#003cb3");
         d3.select(".countryActive").attr("class","countryEU");
         d3.select("#mapInfo").text("");
         d3.select("#mapTitle").text("");
-        d3.select(this).attr("class", "countryActive");
+        d3.select(this).attr("class", "countryActive").style("fill","red");
 
         //SET SOME VARIABLES
         var activeCountry = this.id;console.log(activeCountry + " is active");
@@ -129,7 +131,6 @@
 
           //CALCULATE % OF DIASPORA IN CURRENT ITERATION
           var diasporaPercentage = ((restEuData[i].people / activeDiaspora) * 100).toFixed(2);
-          console.log(diasporaPercentage);
 
           //CHANGE FILL COLOR BASED ON DIASPORA POPULATION
           var color = d3.scale.linear()
