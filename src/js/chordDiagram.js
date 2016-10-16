@@ -20,7 +20,7 @@ function drawChordDiagram () {
   //  DRAW THE CHORD DIAGRAM
   //---------------------------------------------------------------------------
   function drawChords (matrix, mmap) {
-    var w = 850, h = 850, r1 = h / 2, r0 = r1 - 100;
+    var w = 700, h = 700, r1 = h / 2, r0 = r1 - 100;
 
     var fill = d3.scale.ordinal()
         .domain(d3.range(28))
