@@ -459,11 +459,23 @@ p {
 .card > div {
   padding: 1em 1.5em 0 1.5em;
 }
+
+.infoBit img{
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.infoBit p {
+  padding: 1em;
+}
+
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #chordDiagram {
   display: block;
   margin: 0 auto;
+  overflow: hidden;
 }
 #chordInfo p{
   font-size: 0.8em;
@@ -493,6 +505,7 @@ path.chord {
 #mapDiagram {
   display: block;
   margin: 0 auto;
+  overflow: hidden;
 }
 #container{
   margin: 0 auto;
