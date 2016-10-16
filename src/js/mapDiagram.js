@@ -9,8 +9,13 @@
       scale = 750;
       projection = d3.geo.mercator().scale(scale).translate([width / 2, 0]).center(center);
       path = d3.geo.path().projection(projection);
-      svg = d3.select("#mapDiagram").append("svg").attr("height", height).attr("width", width).style("display","block")
-      .style("margin","auto");
+      svg = d3.select("#mapDiagram")
+              .append("svg")
+              .attr("height", height)
+              .attr("id", "mapContainer")
+              .attr("width", width)
+              .style("display","block")
+              .style("margin","auto");
       countries = svg.append("g");
 
 
@@ -80,13 +85,13 @@
         d3.select(this).attr("class", "countryEU");
         d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.select("#mapInfo").text("");
-        d3.select("#mapTitle").text("");
+        d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
       }else {
         //SET THIS AS ACTIVE COUNTRY
         d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.select(".countryActive").attr("class","countryEU");
         d3.select("#mapInfo").text("");
-        d3.select("#mapTitle").text("");
+        d3.select("#selectionTitle").transition().duration(easingDuration/10).ease("quad").style("fill", "#FFFFFF").remove();
         d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","#F47F5E");
 
         //SET SOME VARIABLES
@@ -116,9 +121,21 @@
         }
 
         //DISPLAY TITLE FOR SELECTED
-        d3.select("#mapTitle")
-          .append("h3")
-          .text(activeCountry);
+        d3.select("#mapContainer")
+          .append("text")
+            .style("opacity", 0)
+            .attr("id","selectionTitle")
+            .attr("font-family","Open Sans", "HelveticaNeue", "Helvetica Neue")
+            .attr("font-size","2.5em")
+            .attr("x", 0)
+            .attr("y", 50)
+            .transition().duration(easingDuration/4).ease("quad").style("opacity", 1)
+            .text(activeCountry);
+
+        //MAKE A COLOR SCALE
+        var color = d3.scale.linear()
+                            .domain([5, 15, 55])
+                            .range(['#6baed6','#3182bd','#08519c']);
 
         //DISPLAY DIASPORA TEXT AND GO FOR HEATMAP
         for (var i = 0; i < restEuData.length; i++) {
@@ -135,10 +152,6 @@
           var diasporaPercentage = ((restEuData[i].people / activeDiaspora) * 100).toFixed(2);
 
           //CHANGE FILL COLOR BASED ON DIASPORA POPULATION
-          var color = d3.scale.linear()
-          .domain([5, 15, 55])
-          .range(['#6baed6','#3182bd','#08519c']);
-
           d3.selectAll("#" + restEuData[i].host)
             .transition()
             .duration(easingDuration)
