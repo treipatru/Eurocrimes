@@ -24,7 +24,12 @@ function drawChordDiagram () {
 
     var fill = d3.scale.ordinal()
         .domain(d3.range(28))
-        .range(["#313400", "#f80bd4", "#45e337", "#7b008c", "#cda700", "#c385ff", "#006a23", "#ed0076", "#52dcb4", "#ca0017", "#00b5c6", "#ba2a00", "#63caff", "#ff8811", "#0054a5", "#ff7753", "#00598d", "#ff5163", "#88d1e7", "#7d0021", "#8ba7ff", "#803200", "#48024b", "#e1c37e", "#411438", "#735700", "#ff68af", "#d19f9c"]);
+        .range(["#dc448f", "#449a2b", "#8132ab", "#a469dc", "#3a7524", 
+                "#b542a8", "#449357", "#4d47af", "#a97a20", "#5c75e3",
+                "#d05b23", "#6282ca", "#ce3c37", "#318d76", "#d03f5f",
+                "#315f2b", "#9b2e6b", "#798842", "#724e95", "#5c5d1b",
+                "#b2659a", "#8b6a34", "#3e6ca1", "#b86d3e", "#8a394a",
+                "#8d3f1c", "#bc615d"]);
 
     var chord = d3.layout.chord()
         .padding(.04)
@@ -54,18 +59,9 @@ function drawChordDiagram () {
         .data(chord.groups())
       .enter().append("svg:g")
         .attr("class", "group")
-        .on("mouseover", mouseover)
-        .on("mouseout", function (d) {
-          d3.select("#tooltip").style("visibility", "hidden");
-          d3.selectAll(".fade")
-           .transition()
-           .duration(350)
-           .ease("cubic")
-              .style("opacity", 0.8);
-          d3.selectAll("fade")
-            .style("visibility", "hidden")
-            .classed("fade", false);
-        });
+        .on("mouseover", mouseOverGroup)
+        .on("mouseout", mouseOutGroup)
+        .on("click", onClickGroup);
 
     g.append("svg:path")
         .style("fill", function(d) { return fill(d.index); })
@@ -89,39 +85,30 @@ function drawChordDiagram () {
             .style("stroke", function(d) { return d3.rgb(fill(d.target.index)).darker(); })
             .style("fill", function(d) { return fill(d.target.index); })
             .attr("d", d3.svg.chord().radius(r0))
-            .on("mouseover", function (d) { //Make current mouseover fill 100%
-              d3.select(this)
-                .transition()
-                .duration(250)
-                .ease("cubic")
-                  .style("fill-opacity", 1);
-              d3.select("#tooltip")
-                .style("visibility", "visible")
-                .html(chordTip(rdr(d)))
-                .style("top", function () { return (d3.event.pageY + 50)+"px";})
-                .style("left", function () { return (d3.event.pageX - 130)+"px";});
-            })
-            .on("mouseout", function (d) { 
-              d3.select(this)
-                .transition()
-                .duration(100)
-                .ease("cubic")
-                  .style("fill-opacity", 0.8); //Set opacity back to normal
-              d3.select("#tooltip").
-                style("visibility", "hidden");
-              });
+            .on("mouseover", mouseOverChord)
+            .on("mouseout", mouseOutChord);
 
       function chordTip (d) {
         var p = d3.format(".2%");
-        return "Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + (d.sname === d.tname ? "": ("<br/>" + d.sname + " &leftarrow; " +d.tname + " : " + d.tvalue));
+        return "Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + 
+        (d.sname === d.tname ? "": ("<br/>" + d.sname + " &leftarrow; " +d.tname + " : " + d.tvalue));
       }
 
       function groupTip (d) {
         var p = d3.format(".1%"), q = d3.format(",.3r");
-        return d.gname + " Stats:<br/>" + q(d.gvalue) + " citizens are in prison abroad." + "<br/>" + "This represents " + p(d.gvalue/d.mtotal) + " of total " + q(d.mtotal) +" imprisoned diaspora across the EU.";
+        return d.gname + " has " +q(d.gvalue) + " citizens in E.U. prisons." + 
+        "<br/>" + "That's " + p(d.gvalue/d.mtotal) + " of the total " + q(d.mtotal) +
+        " expat prisoners across the EU.";
       }
 
-      function mouseover(d, i) {
+
+
+  //  MOUSE EVENTS
+  //---------------------------------------------------------------------------
+
+
+      //GROUPS
+      function mouseOverGroup(d, i) {
         d3.select("#tooltip")
           .style("opacity", 0)
           .style("visibility", "visible")
@@ -138,6 +125,51 @@ function drawChordDiagram () {
          chordPaths.classed("fade", function(p) {
            return p.source.index != i && p.target.index != i;
          });
+      }
+
+      function mouseOutGroup (d) {
+
+        //HIDE TOOLTIP
+        d3.select("#tooltip").style("visibility", "hidden");
+        d3.selectAll(".fade")
+         .transition()
+         .duration(350)
+         .ease("cubic")
+         .style("opacity", 0.8);
+        d3.selectAll("fade")
+          .style("visibility", "hidden")
+          .classed("fade", false);
+      }
+
+      //CHORDS
+      function mouseOverChord (d) {
+        //FILL SHAPE 100%
+        d3.select(this)
+        .transition()
+        .duration(250)
+        .ease("cubic")
+        .style("fill-opacity", 1);
+        //VISIBLE TOOLTIP
+        d3.select("#tooltip")
+        .style("visibility", "visible")
+        .html(chordTip(rdr(d)))
+        .style("top", function () { return (d3.event.pageY + 50)+"px";})
+        .style("left", function () { return (d3.event.pageX - 130)+"px";});
+      }
+
+      function mouseOutChord (d) {
+        d3.select(this)
+        .transition()
+        .duration(100)
+        .ease("cubic")
+        .style("fill-opacity", 0.8); //Set opacity back to normal
+        
+        d3.select("#tooltip").
+        style("visibility", "hidden");
+      }
+
+      function onClickGroup (d, i) {
+
       }
   }
 
