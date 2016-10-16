@@ -3,7 +3,8 @@ isfrom,goesto,count
 "Belgium","Austria",2
 "Bulgaria","Austria",114
 "Croatia","Austria",105
-"Czech Republic","Austria",103
+"Cyprus","Austria",0
+"Czech","Austria",103
 "Denmark","Austria",1
 "Estonia","Austria",9
 "Finland","Austria",2
@@ -30,7 +31,8 @@ isfrom,goesto,count
 "Belgium","Belgium",0
 "Bulgaria","Belgium",75
 "Croatia","Belgium",16
-"Czech Republic","Belgium",11
+"Cyprus","Belgium",0
+"Czech","Belgium",11
 "Denmark","Belgium",1
 "Estonia","Belgium",7
 "Finland","Belgium",1
@@ -57,7 +59,8 @@ isfrom,goesto,count
 "Belgium","Bulgaria",0
 "Bulgaria","Bulgaria",0
 "Croatia","Bulgaria",4
-"Czech Republic","Bulgaria",1
+"Cyprus","Bulgaria",0
+"Czech","Bulgaria",1
 "Denmark","Bulgaria",0
 "Estonia","Bulgaria",0
 "Finland","Bulgaria",0
@@ -80,38 +83,96 @@ isfrom,goesto,count
 "Spain","Bulgaria",0
 "Sweden","Bulgaria",1
 "UK","Bulgaria",4
-"Austria","Czech Republic",3
-"Belgium","Czech Republic",1
-"Bulgaria","Czech Republic",77
-"Croatia","Czech Republic",3
-"Czech Republic","Czech Republic",0
-"Denmark","Czech Republic",1
-"Estonia","Czech Republic",0
-"Finland","Czech Republic",0
-"France","Czech Republic",3
-"Germany","Czech Republic",19
-"Greece","Czech Republic",2
-"Hungary","Czech Republic",8
-"Ireland","Czech Republic",0
-"Italy","Czech Republic",6
-"Latvia","Czech Republic",17
-"Lithuania","Czech Republic",7
-"Luxembourg","Czech Republic",0
-"Malta","Czech Republic",0
-"Netherlands","Czech Republic",2
-"Poland","Czech Republic",54
-"Portugal","Czech Republic",0
-"Romania","Czech Republic",80
-"Slovakia","Czech Republic",494
-"Slovenia","Czech Republic",2
-"Spain","Czech Republic",0
-"Sweden","Czech Republic",3
-"UK","Czech Republic",5
+"Austria","Croatia",0
+"Belgium","Croatia",0
+"Bulgaria","Croatia",0
+"Croatia","Croatia",0
+"Cyprus","Croatia",0
+"Czech","Croatia",0
+"Denmark","Croatia",0
+"Estonia","Croatia",0
+"Finland","Croatia",0
+"France","Croatia",0
+"Germany","Croatia",0
+"Greece","Croatia",0
+"Hungary","Croatia",0
+"Ireland","Croatia",0
+"Italy","Croatia",0
+"Latvia","Croatia",0
+"Lithuania","Croatia",0
+"Luxembourg","Croatia",0
+"Malta","Croatia",0
+"Netherlands","Croatia",0
+"Poland","Croatia",0
+"Portugal","Croatia",0
+"Romania","Croatia",0
+"Slovakia","Croatia",0
+"Slovenia","Croatia",0
+"Spain","Croatia",0
+"Sweden","Croatia",0
+"UK","Croatia",0
+"Austria","Cyprus",0
+"Belgium","Cyprus",0
+"Bulgaria","Cyprus",0
+"Croatia","Cyprus",0
+"Cyprus","Cyprus",0
+"Czech","Cyprus",0
+"Denmark","Cyprus",0
+"Estonia","Cyprus",0
+"Finland","Cyprus",0
+"France","Cyprus",0
+"Germany","Cyprus",0
+"Greece","Cyprus",0
+"Hungary","Cyprus",0
+"Ireland","Cyprus",0
+"Italy","Cyprus",0
+"Latvia","Cyprus",0
+"Lithuania","Cyprus",0
+"Luxembourg","Cyprus",0
+"Malta","Cyprus",0
+"Netherlands","Cyprus",0
+"Poland","Cyprus",0
+"Portugal","Cyprus",0
+"Romania","Cyprus",0
+"Slovakia","Cyprus",0
+"Slovenia","Cyprus",0
+"Spain","Cyprus",0
+"Sweden","Cyprus",0
+"UK","Cyprus",0
+"Austria","Czech",3
+"Belgium","Czech",1
+"Bulgaria","Czech",77
+"Croatia","Czech",3
+"Cyprus","Czech",0
+"Czech","Czech",0
+"Denmark","Czech",1
+"Estonia","Czech",0
+"Finland","Czech",0
+"France","Czech",3
+"Germany","Czech",19
+"Greece","Czech",2
+"Hungary","Czech",8
+"Ireland","Czech",0
+"Italy","Czech",6
+"Latvia","Czech",17
+"Lithuania","Czech",7
+"Luxembourg","Czech",0
+"Malta","Czech",0
+"Netherlands","Czech",2
+"Poland","Czech",54
+"Portugal","Czech",0
+"Romania","Czech",80
+"Slovakia","Czech",494
+"Slovenia","Czech",2
+"Spain","Czech",0
+"Sweden","Czech",3
+"UK","Czech",5
 "Austria","Denmark",0
 "Belgium","Denmark",2
 "Bulgaria","Denmark",15
 "Croatia","Denmark",7
-"Czech Republic","Denmark",0
+"Cyprus","Denmark",0
+"Czech","Denmark",0
 "Denmark","Denmark",0
 "Estonia","Denmark",3
 "Finland","Denmark",0
@@ -138,7 +199,8 @@ isfrom,goesto,count
 "Belgium","Estonia",0
 "Bulgaria","Estonia",0
 "Croatia","Estonia",0
-"Czech Republic","Estonia",0
+"Cyprus","Estonia",0
+"Czech","Estonia",0
 "Denmark","Estonia",0
 "Estonia","Estonia",0
 "Finland","Estonia",0
@@ -165,7 +227,8 @@ isfrom,goesto,count
 "Belgium","Finland",0
 "Bulgaria","Finland",12
 "Croatia","Finland",0
-"Czech Republic","Finland",0
+"Cyprus","Finland",0
+"Czech","Finland",0
 "Denmark","Finland",2
 "Estonia","Finland",121
 "Finland","Finland",0
@@ -188,11 +251,40 @@ isfrom,goesto,count
 "Spain","Finland",1
 "Sweden","Finland",7
 "UK","Finland",5
+"Austria","France",5
+"Belgium","France",127
+"Bulgaria","France",172
+"Croatia","France",65
+"Cyprus","France",0
+"Czech","France",12
+"Denmark","France",7
+"Estonia","France",9
+"Finland","France",1
+"France","France",0
+"Germany","France",53
+"Greece","France",15
+"Hungary","France",25
+"Ireland","France",5
+"Italy","France",203
+"Latvia","France",13
+"Lithuania","France",104
+"Luxembourg","France",2
+"Malta","France",1
+"Netherlands","France",153
+"Poland","France",164
+"Portugal","France",478
+"Romania","France",1737
+"Slovakia","France",11
+"Slovenia","France",9
+"Spain","France",282
+"Sweden","France",3
+"UK","France",106
 "Austria","Germany",118
 "Belgium","Germany",46
 "Bulgaria","Germany",405
 "Croatia","Germany",290
-"Czech Republic","Germany",256
+"Cyprus","Germany",0
+"Czech","Germany",256
 "Denmark","Germany",14
 "Estonia","Germany",30
 "Finland","Germany",5
@@ -219,7 +311,8 @@ isfrom,goesto,count
 "Belgium","Greece",6
 "Bulgaria","Greece",397
 "Croatia","Greece",3
-"Czech Republic","Greece",0
+"Cyprus","Greece",0
+"Czech","Greece",0
 "Denmark","Greece",2
 "Estonia","Greece",0
 "Finland","Greece",0
@@ -246,7 +339,8 @@ isfrom,goesto,count
 "Belgium","Hungary",1
 "Bulgaria","Hungary",31
 "Croatia","Hungary",13
-"Czech Republic","Hungary",3
+"Cyprus","Hungary",0
+"Czech","Hungary",3
 "Denmark","Hungary",0
 "Estonia","Hungary",0
 "Finland","Hungary",0
@@ -273,7 +367,8 @@ isfrom,goesto,count
 "Belgium","Ireland",2
 "Bulgaria","Ireland",5
 "Croatia","Ireland",7
-"Czech Republic","Ireland",40
+"Cyprus","Ireland",0
+"Czech","Ireland",40
 "Denmark","Ireland",2
 "Estonia","Ireland",8
 "Finland","Ireland",1
@@ -300,7 +395,8 @@ isfrom,goesto,count
 "Belgium","Italy",15
 "Bulgaria","Italy",160
 "Croatia","Italy",95
-"Czech Republic","Italy",15
+"Cyprus","Italy",0
+"Czech","Italy",15
 "Denmark","Italy",1
 "Estonia","Italy",6
 "Finland","Italy",0
@@ -327,7 +423,8 @@ isfrom,goesto,count
 "Belgium","Latvia",0
 "Bulgaria","Latvia",0
 "Croatia","Latvia",0
-"Czech Republic","Latvia",0
+"Cyprus","Latvia",0
+"Czech","Latvia",0
 "Denmark","Latvia",0
 "Estonia","Latvia",2
 "Finland","Latvia",0
@@ -354,7 +451,8 @@ isfrom,goesto,count
 "Belgium","Lithuania",1
 "Bulgaria","Lithuania",0
 "Croatia","Lithuania",0
-"Czech Republic","Lithuania",0
+"Cyprus","Lithuania",0
+"Czech","Lithuania",0
 "Denmark","Lithuania",0
 "Estonia","Lithuania",0
 "Finland","Lithuania",0
@@ -381,7 +479,8 @@ isfrom,goesto,count
 "Belgium","Luxembourg",8
 "Bulgaria","Luxembourg",0
 "Croatia","Luxembourg",5
-"Czech Republic","Luxembourg",0
+"Cyprus","Luxembourg",0
+"Czech","Luxembourg",0
 "Denmark","Luxembourg",0
 "Estonia","Luxembourg",1
 "Finland","Luxembourg",0
@@ -404,11 +503,40 @@ isfrom,goesto,count
 "Spain","Luxembourg",0
 "Sweden","Luxembourg",0
 "UK","Luxembourg",6
+"Austria","Malta",0
+"Belgium","Malta",0
+"Bulgaria","Malta",0
+"Croatia","Malta",0
+"Cyprus","Malta",0
+"Czech","Malta",0
+"Denmark","Malta",0
+"Estonia","Malta",0
+"Finland","Malta",0
+"France","Malta",0
+"Germany","Malta",0
+"Greece","Malta",0
+"Hungary","Malta",0
+"Ireland","Malta",0
+"Italy","Malta",0
+"Latvia","Malta",0
+"Lithuania","Malta",0
+"Luxembourg","Malta",0
+"Malta","Malta",0
+"Netherlands","Malta",0
+"Poland","Malta",0
+"Portugal","Malta",0
+"Romania","Malta",0
+"Slovakia","Malta",0
+"Slovenia","Malta",0
+"Spain","Malta",0
+"Sweden","Malta",0
+"UK","Malta",0
 "Austria","Netherlands",1
 "Belgium","Netherlands",29
 "Bulgaria","Netherlands",30
 "Croatia","Netherlands",5
-"Czech Republic","Netherlands",3
+"Cyprus","Netherlands",0
+"Czech","Netherlands",3
 "Denmark","Netherlands",0
 "Estonia","Netherlands",1
 "Finland","Netherlands",0
@@ -435,7 +563,8 @@ isfrom,goesto,count
 "Belgium","Poland",1
 "Bulgaria","Poland",38
 "Croatia","Poland",3
-"Czech Republic","Poland",6
+"Cyprus","Poland",0
+"Czech","Poland",6
 "Denmark","Poland",0
 "Estonia","Poland",4
 "Finland","Poland",0
@@ -458,11 +587,40 @@ isfrom,goesto,count
 "Spain","Poland",1
 "Sweden","Poland",1
 "UK","Poland",0
+"Austria","Portugal",0
+"Belgium","Portugal",0
+"Bulgaria","Portugal",15
+"Croatia","Portugal",0
+"Cyprus","Portugal",0
+"Czech","Portugal",0
+"Denmark","Portugal",0
+"Estonia","Portugal",0
+"Finland","Portugal",0
+"France","Portugal",39
+"Germany","Portugal",9
+"Greece","Portugal",0
+"Hungary","Portugal",0
+"Ireland","Portugal",0
+"Italy","Portugal",26
+"Latvia","Portugal",0
+"Lithuania","Portugal",0
+"Luxembourg","Portugal",0
+"Malta","Portugal",0
+"Netherlands","Portugal",20
+"Poland","Portugal",0
+"Portugal","Portugal",0
+"Romania","Portugal",208
+"Slovakia","Portugal",0
+"Slovenia","Portugal",0
+"Spain","Portugal",152
+"Sweden","Portugal",0
+"UK","Portugal",26
 "Austria","Romania",4
 "Belgium","Romania",1
 "Bulgaria","Romania",32
 "Croatia","Romania",0
-"Czech Republic","Romania",0
+"Cyprus","Romania",0
+"Czech","Romania",0
 "Denmark","Romania",1
 "Estonia","Romania",0
 "Finland","Romania",0
@@ -489,7 +647,8 @@ isfrom,goesto,count
 "Belgium","Slovakia",0
 "Bulgaria","Slovakia",4
 "Croatia","Slovakia",3
-"Czech Republic","Slovakia",33
+"Cyprus","Slovakia",0
+"Czech","Slovakia",33
 "Denmark","Slovakia",0
 "Estonia","Slovakia",0
 "Finland","Slovakia",0
@@ -516,7 +675,8 @@ isfrom,goesto,count
 "Belgium","Slovenia",0
 "Bulgaria","Slovenia",8
 "Croatia","Slovenia",26
-"Czech Republic","Slovenia",0
+"Cyprus","Slovenia",0
+"Czech","Slovenia",0
 "Denmark","Slovenia",0
 "Estonia","Slovenia",0
 "Finland","Slovenia",0
@@ -543,7 +703,8 @@ isfrom,goesto,count
 "Belgium","Spain",38
 "Bulgaria","Spain",258
 "Croatia","Spain",36
-"Czech Republic","Spain",36
+"Cyprus","Spain",0
+"Czech","Spain",36
 "Denmark","Spain",6
 "Estonia","Spain",25
 "Finland","Spain",1
@@ -570,7 +731,8 @@ isfrom,goesto,count
 "Belgium","Sweden",10
 "Bulgaria","Sweden",16
 "Croatia","Sweden",0
-"Czech Republic","Sweden",0
+"Cyprus","Sweden",0
+"Czech","Sweden",0
 "Denmark","Sweden",17
 "Estonia","Sweden",9
 "Finland","Sweden",86
@@ -593,3 +755,31 @@ isfrom,goesto,count
 "Spain","Sweden",0
 "Sweden","Sweden",0
 "UK","Sweden",0
+"Austria","UK",6
+"Belgium","UK",30
+"Bulgaria","UK",57
+"Croatia","UK",8
+"Cyprus","UK",17
+"Czech","UK",93
+"Denmark","UK",10
+"Estonia","UK",21
+"Finland","UK",0
+"France","UK",80
+"Germany","UK",61
+"Greece","UK",30
+"Hungary","UK",79
+"Ireland","UK",771
+"Italy","UK",88
+"Latvia","UK",176
+"Lithuania","UK",531
+"Luxembourg","UK",0
+"Malta","UK",7
+"Netherlands","UK",143
+"Poland","UK",1062
+"Portugal","UK",236
+"Romania","UK",630
+"Slovakia","UK",119
+"Slovenia","UK",6
+"Spain","UK",70
+"Sweden","UK",25
+"UK","UK",0
