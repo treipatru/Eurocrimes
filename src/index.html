@@ -128,7 +128,7 @@
         <div class="twelve column" id="mapDiagram"></div>
       </div>
       <div class="row">
-        <div class="twelve columns" id="mapInfo"><p>Look at details.</p></div>
+        <div class="twelve columns" id="mapInfo"><p>Select a country to view information.</p></div>
       </div>
     </div>
 
@@ -172,11 +172,13 @@
         <p>But instead some turn to crime.</p>
         <p>Many Romanians who are law-abiding at home, become criminals abroad.</p>
       </div>
-      <div class="six columns" id="originBar">
-        <p>Here</p>
+      <div class="six columns bars">
+        <p>Average income per country of origin(&euro;)</p>
+        <div id="barIncome"></div>
       </div>
-      <div class="six columns" id="incomeBar">
-        <p>Here</p>
+      <div class="six columns bars">
+        <p>Expats in jail per country of origin(&percnt;)</p>
+        <div id="barPrisoners"></div>
       </div>
     </div>
 
@@ -216,12 +218,15 @@
   <script src="lib/topojson.v1.min.js"></script>
   <script src="js/chordDiagram.js"></script>
   <script src="js/mapDiagram.js"></script>
+  <script src="js/bars.js"></script>
   <script>
     window.onload = init();
 
     function init (){
       drawChordDiagram();
       drawMap();
+      drawBarIncome();
+      drawBarPrisoners();
     }
   </script>
 
