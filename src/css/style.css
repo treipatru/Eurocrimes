@@ -469,6 +469,16 @@ p {
   padding: 1em;
 }
 
+#crimeWave h5{
+  font-weight: bold;
+  border-top: 1px dotted grey;
+}
+
+.center {
+  display: block;
+  margin: auto;
+}
+
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #chordDiagram {
@@ -555,4 +565,32 @@ path.chord {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+.barRectTitle{
+  cursor: default;
+      -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+}
+
+.invisiText {
+  visibility: hidden;
+    cursor: default;
+      -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+}
+.visiText {
+  visibility: visible;
+    cursor: default;
+      -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
 }
