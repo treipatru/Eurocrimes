@@ -424,7 +424,7 @@ there.
 }
 
 p {
-  text-align: justify;
+  /*text-align: justify;*/
 }
 
 /* TOOLTIP
@@ -477,6 +477,12 @@ p {
 .center {
   display: block;
   margin: auto;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  visibility: hidden;
 }
 
 /* CHORD DIAGRAM
@@ -568,29 +574,28 @@ path.chord {
 }
 
 .barRectTitle{
-  cursor: default;
-      -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-            pointer-events: none;
 }
 
 .invisiText {
   visibility: hidden;
-    cursor: default;
-      -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-            pointer-events: none;
 }
+
 .visiText {
   visibility: visible;
-    cursor: default;
-      -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-            pointer-events: none;
+  font-weight: bold;
+}
+
+.selectDisallow {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.nrCountry {
+  text-anchor: middle;
+  font-size: 0.6em;
+  fill: "#000000";
 }
