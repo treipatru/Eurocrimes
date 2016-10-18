@@ -1,11 +1,11 @@
     function drawMap () {
       //MAKE THE SVG ELEMENT
       var center, countries, height, path, projection, scale, svg, width, mapData;
-      width = 960;
+      width = 900;
       height = 600;
-      center = [15,63];
-      scale = 750;
-      projection = d3.geo.mercator().scale(scale).translate([width / 2, 0]).center(center);
+      center = [20,60];
+      scale = 1400;
+      projection = d3.geo.orthographic().scale(scale).translate([width / 1.9, 150]).center(center);
       path = d3.geo.path().projection(projection);
       svg = d3.select("#mapDiagram")
               .append("svg")
@@ -14,10 +14,18 @@
               .attr("width", width)
               .style("display","block")
               .style("margin","auto");
+
+      //DEFINE GRATICULE
+      var graticule = d3.geo.graticule(); 
+      svg.append("path")    
+         .datum(graticule)
+         .attr("class", "graticule")
+         .attr("d", path);
+
       countries = svg.append("g");
 
+      //SET A GLOBAL EASING DURATION
       var easingDuration = 750;
-
 
       //IMPORT DATA AND DRAW THE MAP
       d3.json("./data/map.json", function(data) {
