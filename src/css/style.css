@@ -521,7 +521,6 @@ path.chord {
   display: block;
   margin: 0 auto;
   overflow: hidden;
-  border-bottom: 1px dotted grey;
 }
 #container{
   margin: 0 auto;
@@ -532,6 +531,12 @@ path.chord {
 }
 #mapInfo {
   font-size: 0.8em;
+}
+
+.nrCountry {
+  text-anchor: middle;
+  font-size: 0.6em;
+  fill: "#000000";
 }
 
 .country{
@@ -546,6 +551,13 @@ path.chord {
 .countryActive {
   fill: #E7714A;
   stroke: #ededed;
+}
+
+.graticule {
+  fill: none;
+  stroke: #dddddd;
+  stroke-width: 1;
+  stroke-dasharray: 1,0,1;
 }
 
 /* BAR CHARTS
@@ -569,8 +581,9 @@ path.chord {
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #cccccc;
   shape-rendering: crispEdges;
+  opacity: 0.5;
 }
 
 .barRectTitle{
@@ -594,8 +607,11 @@ path.chord {
   pointer-events: none;
 }
 
-.nrCountry {
-  text-anchor: middle;
-  font-size: 0.6em;
-  fill: "#000000";
+.grid {
+  stroke: lightgrey;
+  opacity: 1;
+}
+
+.grid path {
+  stroke-width: 0;
 }
