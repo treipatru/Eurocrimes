@@ -71,7 +71,7 @@ function drawChordDiagram () {
         .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
         .attr("dy", ".35em")
         .style("font-family", "Open Sans, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;")
-        .style("font-size", "10px")
+        .style("font-size", "0.6em")
         .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
         .attr("transform", function(d) {
           return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" + "translate(" + (r0 + 36) + ")" + (d.angle > Math.PI ? "rotate(180)" : "");
@@ -90,15 +90,14 @@ function drawChordDiagram () {
 
       function chordTip (d) {
         var p = d3.format(".2%");
-        return "Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + 
+        return "Prisoner Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + 
         (d.sname === d.tname ? "": ("<br/>" + d.sname + " &leftarrow; " +d.tname + " : " + d.tvalue));
       }
 
       function groupTip (d) {
         var p = d3.format(".1%"), q = d3.format(",.3r");
         return d.gname + " has " +q(d.gvalue) + " citizens in E.U. prisons." + 
-        "<br/>" + "That's " + p(d.gvalue/d.mtotal) + " of the total " + q(d.mtotal) +
-        " expat prisoners across the EU.";
+        "<br/>" + "That's " + p(d.gvalue/d.mtotal) + " of the total expat prisoners across the EU.";
       }
 
 
@@ -118,6 +117,7 @@ function drawChordDiagram () {
 
         d3.select("#tooltip")
           .transition()
+          .delay(500)
           .duration(400)
           .ease("cubic")
             .style("opacity", 0.8);
@@ -133,7 +133,7 @@ function drawChordDiagram () {
         d3.select("#tooltip").style("visibility", "hidden");
         d3.selectAll(".fade")
          .transition()
-         .duration(350)
+         .duration(500)
          .ease("cubic")
          .style("opacity", 0.8);
         d3.selectAll("fade")
