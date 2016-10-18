@@ -15,7 +15,8 @@
 
      	var xAxis = d3.svg.axis()
      			  .scale(x)
-     			  .orient("bottom");
+     			  .orient("bottom")
+            .ticks(4, ".f");
 
 	var chart = d3.select("#salaryContainer").attr("width", width);
 
@@ -36,40 +37,40 @@
       	//DRAW BARS
       	bar.append("rect")
       	   .attr("class","barRect")
-      	   .style("fill", "#238443")
+      	   .style("fill", "#9CD4D1")
       	   .attr("width", function(d) { return x(d.income); })
       	   .attr("height", barHeight);
 
       	//DRAW COUNTRY NUMBERS
-		bar.append("text")
-		   .attr("class","invisiText")
-		   .attr("x", d3.select("#salaryContainer").attr("width") - 33)
-		   .attr("y", barHeight/2)
-		   .attr("text-anchor","right")
-		   .attr("dy", ".35em")
-		   .style("font-size", "0.7em")
-		   .style("fill", "#FFFFFF")
-		   .text(function (d) {return d.income;});
+    		bar.append("text")
+    		   .attr("class","invisiText selectDisallow")
+    		   .attr("x", d3.select("#salaryContainer").attr("width") - 33)
+    		   .attr("y", barHeight/2)
+    		   .attr("text-anchor","right")
+    		   .attr("dy", ".35em")
+    		   .style("font-size", "0.7em")
+    		   .style("fill", "#FFFFFF")
+    		   .text(function (d) {return d.income;});
 
       	//DRAW COUNTRY LABEL
-  		bar.append("text")
-  		   .attr("class","barRectTitle")
-		   .attr("x", 5)
-		   .attr("y", barHeight/2)
-		   .attr("dy", ".35em")
-		   .style("fill", "#000000")
-		   .style("font-size", "0.7em")
-		   .text(function(d) { return d.country; });
+    		bar.append("text")
+    		   .attr("class","barRectTitle selectDisallow")
+  		   .attr("x", 5)
+  		   .attr("y", barHeight/2)
+  		   .attr("dy", ".35em")
+  		   .style("fill", "#000000")
+  		   .style("font-size", "0.7em")
+  		   .text(function(d) { return d.country; });
 
-		//DRAW AXIS
-		chart.append("g")
-		     .attr("class", "x axis")
-		     .attr("transform", "translate(0," + (height - axisHeight) + ")")
-		     .call(xAxis);
+    		//DRAW AXIS
+    		chart.append("g")
+    		     .attr("class", "x axis")
+    		     .attr("transform", "translate(0," + (height - axisHeight) + ")")
+    		     .call(xAxis);
 
-		chart.selectAll(".barRect")
-		     .on("mouseover", mouseOverBar)
-		     .on("mouseout", mouseOutBar);
+      	chart.selectAll(".barRect")
+      	     .on("mouseover", mouseOverBar)
+      	     .on("mouseout", mouseOutBar);
 
       });
 
@@ -85,35 +86,35 @@
   	curWidth = d3.select(this).attr("width");
 
   	//DISPLAY NUMBER ON BAR
-  	d3.select(this.parentNode).select("text").attr("class","visiText");
+  	d3.select(this.parentNode).select("text").attr("class","visiText selectDisallow");
 
   	//TRANSITION
   	d3.select(this)
-  	  .transition()
-  	  .delay(100)
-  	  .duration(400)
-        .ease("exp")
-        .attr("width", d3.select("#salaryContainer").attr("width"))
-  	  .transition()
-  	  .duration(100)
-  	  .ease("exp")
-  	  .style("fill", "#78c679");
+      .transition()
+      .duration(20)
+      .ease("cubic")
+      .style("fill", "#89BDBA")
+  	     .transition()
+  	     .delay(200)
+  	     .duration(400)
+         .ease("exp")
+         .attr("width", d3.select("#salaryContainer").attr("width"));
   }
 
   function mouseOutBar () {
   	//REMOVE NUMBER FROM BAR
-  	d3.select(this.parentNode).select("text").attr("class","invisiText");
+  	d3.select(this.parentNode).select("text").attr("class","invisiText selectDisallow");
 
   	//TRANSITION
     	d3.select(this)
-    	  .transition()
-  	  .duration(500)
+        .transition()
+        .duration(200)
         .ease("exp")
-        .attr("width", curWidth)
-  	  .transition()
-  	  .duration(200)
-  	  .ease("exp")
-  	  .style("fill", "#238443");
+        .style("fill", "#9CD4D1")
+    	     .transition()
+  	       .duration(500)
+           .ease("exp")
+           .attr("width", curWidth);
   	//RESET VAR
 	curWidth = 0;
   }
@@ -140,7 +141,8 @@
 
      	var xAxis = d3.svg.axis()
      			  .scale(x)
-     			  .orient("bottom");
+     			  .orient("bottom")
+            .ticks(7);
 
 	var chart = d3.select("#prisonersContainer").attr("width", width);
 
@@ -161,13 +163,13 @@
       	//DRAW BARS
       	bar.append("rect")
       	   .attr("class","barRect")
-      	   .style("fill", "#fb6a4a")
+      	   .style("fill", "#ED9F85")
       	   .attr("width", function(d) { return x(d.percentage); })
       	   .attr("height", barHeight);
 
       	//DRAW COUNTRY NUMBERS
 		bar.append("text")
-		   .attr("class","invisiText")
+		   .attr("class","invisiText selectDisallow")
 		   .attr("x", d3.select("#prisonersContainer").attr("width") - 33)
 		   .attr("y", barHeight/2)
 		   .attr("text-anchor","right")
@@ -178,7 +180,7 @@
 
       	//DRAW COUNTRY LABEL
   		bar.append("text")
-  		   .attr("class","barRectTitle")
+  		   .attr("class","barRectTitle selectDisallow")
 		   .attr("x", 5)
 		   .attr("y", barHeight/2)
 		   .attr("dy", ".35em")
@@ -210,35 +212,35 @@
   	curWidth = d3.select(this).attr("width");
 
   	//DISPLAY NUMBER ON BAR
-  	d3.select(this.parentNode).select("text").attr("class","visiText");
+  	d3.select(this.parentNode).select("text").attr("class","visiText selectDisallow");
 
   	//TRANSITION
   	d3.select(this)
-  	  .transition()
-  	  .delay(100)
-  	  .duration(400)
-        .ease("exp")
-        .attr("width", d3.select("#salaryContainer").attr("width"))
-  	  .transition()
-  	  .duration(100)
-  	  .ease("exp")
-  	  .style("fill", "#fcae91");
+      .transition()
+      .duration(20)
+      .ease("cubic")
+      .style("fill", "#ED7149")
+  	     .transition()
+  	     .delay(100)
+  	     .duration(400)
+         .ease("exp")
+         .attr("width", d3.select("#salaryContainer").attr("width"));
   }
 
   function mouseOutBar () {
   	//REMOVE NUMBER FROM BAR
-  	d3.select(this.parentNode).select("text").attr("class","invisiText");
+  	d3.select(this.parentNode).select("text").attr("class","invisiText selectDisallow");
 
   	//TRANSITION
     	d3.select(this)
-    	  .transition()
-  	  .duration(500)
+        .transition()
+        .duration(200)
         .ease("exp")
-        .attr("width", curWidth)
-  	  .transition()
-  	  .duration(200)
-  	  .ease("exp")
-  	  .style("fill", "#fb6a4a");
+        .style("fill", "#ED9F85")
+    	     .transition()
+  	       .duration(500)
+           .ease("exp")
+           .attr("width", curWidth);
   	//RESET VAR
 	curWidth = 0;
   }
