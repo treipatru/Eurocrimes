@@ -63,7 +63,7 @@
   .one.columns                    { width: 4.66666666667%; }
   .two.columns                    { width: 13.3333333333%; }
   .three.columns                  { width: 22%;            }
-  .four.columns                   { width: 30.6666666667%; }
+  .four.columns                   { width: 32.6666666667%; }
   .five.columns                   { width: 39.3333333333%; }
   .six.columns                    { width: 48%; margin-bottom: 3%;}
   .seven.columns                  { width: 56.6666666667%; }
@@ -71,7 +71,7 @@
   .nine.columns                   { width: 74.0%;          }
   .ten.columns                    { width: 82.6666666667%; }
   .eleven.columns                 { width: 91.3333333333%; }
-  .twelve.columns                 { width: 100%; margin-left: 0; margin-bottom: 3%;}
+  .twelve.columns                 { width: 100%; margin-left: 0;}
 
   .one-third.column               { width: 30.6666666667%; }
   .two-thirds.column              { width: 65.3333333333%; }
@@ -423,9 +423,6 @@ there.
   border-bottom: 10px solid #067A88;
 }
 
-p {
-  /*text-align: justify;*/
-}
 
 /* TOOLTIP
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -462,11 +459,15 @@ p {
 .infoBit img{
   display: block;
   margin: auto;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .infoBit p {
   padding: 1em;
+}
+
+.infoBit h6 {
+  text-align: center;
 }
 
 #crimeWave h5{
@@ -485,16 +486,48 @@ p {
   visibility: hidden;
 }
 
+.infoBox {
+  display: block;
+  width: 93% !important;
+  margin-left: 3.5% !important;
+  margin-right: 3.5% !important;
+  padding: 0.5em !important;
+  background: #dbdbdb;
+  border-radius: 4px;
+}
+.infoBox p{
+  font-size: 0.6em;
+  margin-bottom: 0;
+}
+
+.team p{
+  font-size: 0.6em;
+}
+
+.moreBit img{
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.moreBit p {
+  text-align: center;
+  padding: 1em;
+  font-size: 0.6em;
+}
+
+.moreBit h6 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #chordDiagram {
   display: block;
   margin: 0 auto;
   overflow: hidden;
-}
-#chordInfo p{
-  font-size: 0.8em;
-  margin: 0 0 1em 0;
 }
 
 
@@ -521,6 +554,7 @@ path.chord {
   display: block;
   margin: 0 auto;
   overflow: hidden;
+  padding: 1em 0 1em 0;
 }
 #container{
   margin: 0 auto;
@@ -528,9 +562,6 @@ path.chord {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 2em;
-}
-#mapInfo {
-  font-size: 0.8em;
 }
 
 .nrCountry {
@@ -615,3 +646,4 @@ path.chord {
 .grid path {
   stroke-width: 0;
 }
+
