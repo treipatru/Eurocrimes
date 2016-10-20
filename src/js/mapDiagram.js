@@ -15,17 +15,10 @@
               .style("display","block")
               .style("margin","auto");
 
-      // //DEFINE GRATICULE
-      // var graticule = d3.geo.graticule(); 
-      // svg.append("path")    
-      //    .datum(graticule)
-      //    .attr("class", "graticule")
-      //    .attr("d", path);
-
       countries = svg.append("g");
 
       //SET A GLOBAL EASING DURATION
-      var easingDuration = 750;
+      var easingDuration = 500;
 
       //IMPORT DATA AND DRAW THE MAP
       d3.json("./data/map.json", function(data) {
@@ -47,7 +40,7 @@
 
         //MAKE TEXT CONTAINERS FOR COUNTRY NUMBERS
         d3.selectAll(".gCountryEU").append("text")
-          .attr("class", "nrCountry selectDisallow")
+          .attr("class", "nrCountry selectDisallow disablePointer")
           .attr("id", function (d) {return "nr" + d.properties.NAME;})
           .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
           .attr("dy", ".35em")
