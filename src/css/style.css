@@ -624,6 +624,7 @@ path.chord {
 }
 
 .barRectTitle{
+  font-weight: 500;
 }
 
 .invisiText {
@@ -641,7 +642,7 @@ path.chord {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 
 .grid {
