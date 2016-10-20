@@ -1,11 +1,11 @@
     function drawMap () {
       //MAKE THE SVG ELEMENT
       var center, countries, height, path, projection, scale, svg, width, mapData;
-      width = 900;
+      width = 850;
       height = 600;
       center = [20,60];
-      scale = 1400;
-      projection = d3.geo.orthographic().scale(scale).translate([width / 1.9, 150]).center(center);
+      scale = 1100;
+      projection = d3.geo.azimuthalEqualArea().scale(scale).translate([width / 2, 150]).center(center);
       path = d3.geo.path().projection(projection);
       svg = d3.select("#mapDiagram")
               .append("svg")
@@ -148,7 +148,7 @@
             .attr("id","selectionTitle")
             .attr("font-family","Open Sans", "HelveticaNeue", "Helvetica Neue")
             .attr("font-size","2.5em")
-            .attr("x", 0)
+            .attr("x", 10)
             .attr("y", 50)
             .transition().duration(easingDuration).ease("quad").style("opacity", 1)
             .text(activeCountry);
