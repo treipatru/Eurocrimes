@@ -613,12 +613,13 @@ path.chord {
 
 .axis text {
   font: 10px sans-serif;
+  fill: #949599;
 }
 
 .axis path,
 .axis line {
   fill: none;
-  stroke: #cccccc;
+  stroke: #949599;
   shape-rendering: crispEdges;
   opacity: 0.5;
 }
@@ -642,7 +643,10 @@ path.chord {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /*pointer-events: none;*/
+}
+
+.disablePointer {
+  pointer-events: none;
 }
 
 .grid {

@@ -21,6 +21,8 @@
       .ticks(7);
 
       var chart = d3.select("#prisonersContainer").attr("width", width);
+      chart.append("g").attr("id","prisonersGrid");
+      chart.append("g").attr("id","prisonersBars");
 
       //IMPORT DATA
       d3.csv("data/bar-percentage.csv", type, function (error, data) {
@@ -30,7 +32,7 @@
 
 
       	//MAKE SVG GROUPS FOR EACH BAR
-      	var bar = chart.selectAll("g")
+      	var bar = chart.select("#prisonersBars").selectAll("g")
        .data(data)
        .enter()
        .append("g")
@@ -55,10 +57,10 @@
         .text(function(d) { return d.country; });
 
 		//DRAW AXIS
-		chart.append("g")
+		chart.select("#prisonersGrid").append("g")
    .attr("class", "x axis")
    .attr("transform", "translate(0," + (height - axisHeight) + ")")
-   .call(xAxis);
+   .call(xAxis.tickSize(-height, 3).tickPadding(5));
 
    chart.selectAll(".bars")
    .on("mouseover", mouseOverBar)
@@ -137,7 +139,8 @@
       .ticks(7);
 
       var chart = d3.select("#salaryContainer").attr("width", width);
-
+      chart.append("g").attr("id","salaryGrid");
+      chart.append("g").attr("id","salaryBars");
       //IMPORT DATA
       d3.csv("data/bar-income.csv", type, function (error, data) {
         x.domain([0, d3.max(data, function(d) { return d.income; })]);
@@ -146,7 +149,7 @@
 
 
         //MAKE SVG GROUPS FOR EACH BAR
-        var bar = chart.selectAll("g")
+        var bar = chart.select("#salaryBars").selectAll("g")
        .data(data)
        .enter()
        .append("g")
@@ -171,10 +174,10 @@
         .text(function(d) { return d.country; });
 
     //DRAW AXIS
-    chart.append("g")
+    chart.select("#salaryGrid").append("g")
    .attr("class", "x axis")
    .attr("transform", "translate(0," + (height - axisHeight) + ")")
-   .call(xAxis);
+   .call(xAxis.tickSize(-height, 3).tickPadding(5));
 
    chart.selectAll(".bars")
    .on("mouseover", mouseOverBar)
@@ -190,7 +193,7 @@
     d3.select(this).select("rect")
     .transition()
     .duration(300)
-    .ease("bounce").style("fill","#61d3cc");
+    .ease("bounce").style("fill","#5bc1ba");
 
     //TRANSITION
     d3.select(this)
