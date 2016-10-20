@@ -521,6 +521,11 @@ there.
   margin-bottom: 0;
 }
 
+.quote {
+  padding: 1em;
+  background: rgba(135, 187, 185, 0.1);
+}
+
 
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -556,6 +561,7 @@ path.chord {
   overflow: hidden;
   padding: 1em 0 1em 0;
 }
+
 #container{
   margin: 0 auto;
   width: 900px;
