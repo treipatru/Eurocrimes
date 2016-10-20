@@ -15,12 +15,12 @@
               .style("display","block")
               .style("margin","auto");
 
-      //DEFINE GRATICULE
-      var graticule = d3.geo.graticule(); 
-      svg.append("path")    
-         .datum(graticule)
-         .attr("class", "graticule")
-         .attr("d", path);
+      // //DEFINE GRATICULE
+      // var graticule = d3.geo.graticule(); 
+      // svg.append("path")    
+      //    .datum(graticule)
+      //    .attr("class", "graticule")
+      //    .attr("d", path);
 
       countries = svg.append("g");
 
@@ -51,6 +51,7 @@
           .attr("id", function (d) {return "nr" + d.properties.NAME;})
           .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
           .attr("dy", ".35em")
+          .style("font-weight", "bold")
           .style("opacity", 0);
 
       //IMPORT SECONDARY DIASPORA DATA AND ASSIGN TO COUNTRIES
@@ -155,8 +156,8 @@
 
         //MAKE A COLOR SCALE
         var color = d3.scale.linear()
-                            .domain([5, 15, 55])
-                            .range(['#6baed6','#3182bd','#08519c']);
+                            .domain([5, 15, 35,60])
+                            .range(['#8DA9D3','#3E649D','#3E649D','#3E649D']);
 
         //DISPLAY DIASPORA TEXT AND GO FOR HEATMAP
         for (var i = 0; i < restEuData.length; i++) {
