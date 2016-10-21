@@ -492,12 +492,26 @@ there.
   margin-left: 3.5% !important;
   margin-right: 3.5% !important;
   padding: 0.5em !important;
-  background: #dbdbdb;
+  background-color: #E2E2E2;
   border-radius: 4px;
 }
+
+.infoBox:hover{
+  background-color: #FFFBAF;
+  -webkit-transition: background 500ms ease-in;
+  -moz-transition: background 500ms ease-in;
+  -ms-transition: background 500ms ease-in;
+  -o-transition: background 500ms ease-in;
+  transition: background 500ms ease-in;
+}
+
 .infoBox p{
+  background-image: url("../img/infoBoxClick.png");
+  background-repeat: no-repeat;
+  background-position: left;
   font-size: 0.6em;
   margin-bottom: 0;
+  padding-left: 25px;
 }
 
 .team p{
@@ -527,6 +541,12 @@ there.
 }
 
 
+.mouseOverTrigger {
+  stroke-width", 0)
+  fill: whit
+  opacity: 0.0;
+}
+
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #chordDiagram {
@@ -541,7 +561,7 @@ there.
   pointer-events: all;
 }
 path.group {
-  fill-opacity: .8;
+  fill-opacity: 1;
 }
 path.chord {
   fill-opacity: .8;
@@ -592,7 +612,7 @@ path.chord {
 
 .graticule {
   fill: none;
-  stroke: #dddddd;
+  stroke: #ff00ff;
   stroke-width: 1;
   stroke-dasharray: 1,0,1;
 }
