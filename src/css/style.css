@@ -439,6 +439,7 @@ there.
   margin: 0 auto;
   white-space: nowrap;
   pointer-events: none;
+  font-size: 0.7em;
 }
 
 #tooltip p{

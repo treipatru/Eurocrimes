@@ -1,60 +1,72 @@
-  //EXPATS IN JAIL/COUNTRY OF ORIGIN
-  //---------------------------------------------------------------------------
-    function drawBarPrisoners () {
-      //MAKE THE SVG ELEMENT
-      var width, height, svg, barHeight, barSpacing, axisHeight;
-      width = 400;
-      barHeight = 20;
-      barSpacing = 8;
-      axisHeight = 20;
-      svg = d3.select("#barPrisoners").append("svg")
-      .attr("id","prisonersContainer")
-      .style("display","block")
-      .style("margin","auto");
-      
-      var x = d3.scale.linear()
-      .range([0, width]);
+//EXPATS IN JAIL/COUNTRY OF ORIGIN
+//-----------------------------------------------------------------------------
+function drawBarPrisoners () {
+  
+  //DYNAMIC WIDTH
+  var margin = {top: 10, left: 10, bottom: 10, right: 10},
+      boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
+      boxWidth = boxWidth - margin.left - margin.right,
+      boxRatio = 0.5;
 
-      var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .ticks(7);
+  d3.select(window).on('resize', resizePris);
 
-      var chart = d3.select("#prisonersContainer").attr("width", width);
-      chart.append("g").attr("id","prisonersGrid");
-      chart.append("g").attr("id","prisonersBars");
+  //MAKE THE SVG ELEMENT
+  var height, svg, barHeight, barSpacing, axisHeight;
+  barHeight = 20;
+  barSpacing = 8;
+  axisHeight = 20;
+  svg = d3.select("#barPrisoners").append("svg")
+  .attr("id","prisonersContainer")
+  .style("display","block")
+  .style("margin","auto");
+  
+  var x = d3.scale.linear()
+  .range([0, boxWidth]);
 
-      //IMPORT DATA
-      d3.csv("data/bar-percentage.csv", type, function (error, data) {
-      	x.domain([0, d3.max(data, function(d) { return d.percentage; })]);
-      	var height = ((barHeight + barSpacing) * data.length) + axisHeight;
-      	chart.attr("height", height);
+  var xAxis = d3.svg.axis()
+  .scale(x)
+  .orient("bottom")
+  .ticks(5);
+
+  render();
+  
+  function render () {
+
+    var chart = d3.select("#prisonersContainer").attr("width", boxWidth);
+    chart.append("g").attr("id","prisonersGrid");
+    chart.append("g").attr("id","prisonersBars");
+
+    //IMPORT DATA
+    d3.csv("data/bar-percentage.csv", type, function (error, data) {
+    	x.domain([0, d3.max(data, function(d) { return d.percentage; })]);
+    	var height = ((barHeight + barSpacing) * data.length) + axisHeight;
+    	chart.attr("height", height);
 
 
-      	//MAKE SVG GROUPS FOR EACH BAR
-      	var bar = chart.select("#prisonersBars").selectAll("g")
-       .data(data)
-       .enter()
-       .append("g")
-       .attr("class", "bars")
-       .attr("transform", function(d, i) { return "translate(0," + i * (barHeight + barSpacing) + ")"; });
+  	//MAKE SVG GROUPS FOR EACH BAR
+  	var bar = chart.select("#prisonersBars").selectAll("g")
+   .data(data)
+   .enter()
+   .append("g")
+   .attr("class", "bars")
+   .attr("transform", function(d, i) { return "translate(0," + i * (barHeight + barSpacing) + ")"; });
 
-      	//DRAW BARS
-      	bar.append("rect")
-        .attr("class","barRect")
-        .style("fill", "#ED9F85")
-        .attr("width", function(d) { return x(d.percentage); })
-        .attr("height", barHeight);
+  	//DRAW BARS
+  	bar.append("rect")
+    .attr("class","barRect")
+    .style("fill", "#ED9F85")
+    .attr("width", function(d) { return x(d.percentage); })
+    .attr("height", barHeight);
 
-      	//DRAW COUNTRY LABEL
-        bar.append("text")
-        .attr("class","barRectTitle selectDisallow")
-        .attr("x", 5)
-        .attr("y", barHeight/2)
-        .attr("dy", ".35em")
-        .style("fill", "#000000")
-        .style("font-size", "0.7em")
-        .text(function(d) { return d.country; });
+  	//DRAW COUNTRY LABEL
+    bar.append("text")
+    .attr("class","barRectTitle selectDisallow")
+    .attr("x", 5)
+    .attr("y", barHeight/2)
+    .attr("dy", ".35em")
+    .style("fill", "#000000")
+    .style("font-size", "0.7em")
+    .text(function(d) { return d.country; });
 
 		//DRAW AXIS
 		chart.select("#prisonersGrid").append("g")
@@ -66,11 +78,13 @@
    .on("mouseover", mouseOverBar)
    .on("mouseout", mouseOutBar);
 
- });
+    });
+  }
 
-      function type(d) {
-	d.percentage = +d.percentage; // coerce to number
-	return d;}
+  function type(d) {
+   d.percentage = +d.percentage; // coerce to number
+   return d;
+  }
 
   function mouseOverBar () {
     d3.select(this).select("rect")
@@ -111,67 +125,92 @@
     .text(function (d) {return d.country;});
   }
 
+  function resizePris () {
+    // adjust things when the window size changes
+    boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
+    boxWidth = boxWidth - margin.left - margin.right;
+    
+    //remove current
+    d3.select("#prisonersGrid").remove();
+    d3.select("#prisonersBars").remove();
+
+    //update svg
+    render();
+  }
 }
 
 
 
 
-  //AVERAGE INCOME PER COUNTRY OF ORIGIN
-  //---------------------------------------------------------------------------
-    function drawBarIncome () {
-      //MAKE THE SVG ELEMENT
-      var width, height, svg, barHeight, barSpacing, axisHeight;
-      width = 400;
-      barHeight = 20;
-      barSpacing = 8;
-      axisHeight = 20;
-      svg = d3.select("#barIncome").append("svg")
-      .attr("id","salaryContainer")
-      .style("display","block")
-      .style("margin","auto");
-      
-      var x = d3.scale.linear()
-      .range([0, width]);
+//AVERAGE INCOME PER COUNTRY OF ORIGIN
+//-----------------------------------------------------------------------------
+function drawBarIncome () {
+  
+  //DYNAMIC WIDTH
+  var margin = {top: 10, left: 10, bottom: 10, right: 10},
+      boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
+      boxWidth = boxWidth - margin.left - margin.right,
+      boxRatio = 0.5;
 
-      var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .ticks(7);
+  d3.select(window).on('resize', resizeInc);
 
-      var chart = d3.select("#salaryContainer").attr("width", width);
-      chart.append("g").attr("id","salaryGrid");
-      chart.append("g").attr("id","salaryBars");
-      //IMPORT DATA
-      d3.csv("data/bar-income.csv", type, function (error, data) {
-        x.domain([0, d3.max(data, function(d) { return d.income; })]);
-        var height = ((barHeight + barSpacing) * data.length) + axisHeight;
-        chart.attr("height", height);
+  //MAKE THE SVG ELEMENT
+  var height, svg, barHeight, barSpacing, axisHeight;
+  barHeight = 20;
+  barSpacing = 8;
+  axisHeight = 20;
+  svg = d3.select("#barIncome").append("svg")
+  .attr("id","salaryContainer")
+  .style("display","block")
+  .style("margin","auto");
+  
+  var x = d3.scale.linear()
+  .range([0, boxWidth]);
+
+  var xAxis = d3.svg.axis()
+  .scale(x)
+  .orient("bottom")
+  .ticks(4);
+
+  render();
+  
+  function render () {
+
+    var chart = d3.select("#salaryContainer").attr("width", boxWidth);
+    chart.append("g").attr("id","salaryGrid");
+    chart.append("g").attr("id","salaryBars");
+
+    //IMPORT DATA
+    d3.csv("data/bar-income.csv", type, function (error, data) {
+      x.domain([0, d3.max(data, function(d) { return d.income; })]);
+      var height = ((barHeight + barSpacing) * data.length) + axisHeight;
+      chart.attr("height", height);
 
 
-        //MAKE SVG GROUPS FOR EACH BAR
-        var bar = chart.select("#salaryBars").selectAll("g")
-       .data(data)
-       .enter()
-       .append("g")
-       .attr("class", "bars")
-       .attr("transform", function(d, i) { return "translate(0," + i * (barHeight + barSpacing) + ")"; });
+    //MAKE SVG GROUPS FOR EACH BAR
+    var bar = chart.select("#salaryBars").selectAll("g")
+   .data(data)
+   .enter()
+   .append("g")
+   .attr("class", "bars")
+   .attr("transform", function(d, i) { return "translate(0," + i * (barHeight + barSpacing) + ")"; });
 
-        //DRAW BARS
-        bar.append("rect")
-        .attr("class","barRect")
-        .style("fill", "#9CD4D1")
-        .attr("width", function(d) { return x(d.income); })
-        .attr("height", barHeight);
+    //DRAW BARS
+    bar.append("rect")
+    .attr("class","barRect")
+    .style("fill", "#9CD4D1")
+    .attr("width", function(d) { return x(d.income); })
+    .attr("height", barHeight);
 
-        //DRAW COUNTRY LABEL
-        bar.append("text")
-        .attr("class","barRectTitle selectDisallow")
-        .attr("x", 5)
-        .attr("y", barHeight/2)
-        .attr("dy", ".35em")
-        .style("fill", "#000000")
-        .style("font-size", "0.7em")
-        .text(function(d) { return d.country; });
+    //DRAW COUNTRY LABEL
+    bar.append("text")
+    .attr("class","barRectTitle selectDisallow")
+    .attr("x", 5)
+    .attr("y", barHeight/2)
+    .attr("dy", ".35em")
+    .style("fill", "#000000")
+    .style("font-size", "0.7em")
+    .text(function(d) { return d.country; });
 
     //DRAW AXIS
     chart.select("#salaryGrid").append("g")
@@ -183,11 +222,13 @@
    .on("mouseover", mouseOverBar)
    .on("mouseout", mouseOutBar);
 
- });
+    });
+  }
 
-      function type(d) {
-  d.income = +d.income; // coerce to number
-  return d;}
+  function type(d) {
+   d.income = +d.income; // coerce to number
+   return d;
+  }
 
   function mouseOverBar () {
     d3.select(this).select("rect")
@@ -228,4 +269,16 @@
     .text(function (d) {return d.country;});
   }
 
+  function resizeInc () {
+    // adjust things when the window size changes
+    boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
+    boxWidth = boxWidth - margin.left - margin.right;
+    
+    //remove current
+    d3.select("#salaryGrid").remove();
+    d3.select("#salaryBars").remove();
+
+    //update svg
+    render();
+  }
 }
