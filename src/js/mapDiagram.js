@@ -53,6 +53,7 @@ function drawMap () {
       .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
       .attr("class", "countryEU")
       .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
       .on("mouseout", mouseout)
       .on("click", onClick);
 
@@ -86,12 +87,40 @@ function drawMap () {
     function mouseover (){
       var currentSelection = d3.select(this);
 
-      currentSelection.style("opacity","0.8");
+
+      if (!d3.selectAll(".countryActive").empty()) {
+        currentSelection.style("opacity","0.8");
+        d3.select("#tooltip")
+          .style("visibility", "visible")
+          .html("<p>"+ currentSelection.attr("id") + "</p>")
+          .style("top", function () { return (d3.event.pageY + 10)+"px";})
+          .style("left", function () { return (d3.event.pageX - 0)+"px";});
+
+
+          // var newObj = d3.select(".countryActive").datum("diaspora");
+          // var tmpName = currentSelection.attr("id");
+
+          // console.log(tmpName);
+          // console.log(newObj.diaspora[tmpName]);
+
+      } else {
+
+        currentSelection.style("opacity","0.8");
+        d3.select("#tooltip")
+          .style("visibility", "visible")
+          .html("<p>"+ currentSelection.attr("id") + "</p>")
+          .style("top", function () { return (d3.event.pageY + 10)+"px";})
+          .style("left", function () { return (d3.event.pageX - 0)+"px";});
+
+
+      }
+
+    }
+
+    function mousemove (d) {
       d3.select("#tooltip")
-      .style("visibility", "visible")
-      .html("<p>"+ currentSelection.attr("id") + "</p>")
-      .style("top", function () { return (d3.event.pageY + 10)+"px";})
-      .style("left", function () { return (d3.event.pageX - 0)+"px";});
+        .style("left", (d3.event.pageX + 20) + "px")
+        .style("top", (d3.event.pageY + 20) + "px");
     }
 
     function mouseout() {
@@ -114,16 +143,24 @@ function drawMap () {
 
       //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
       if (initialClass === "countryActive"){
+        //DISABLE COUNTRY ACTIVE
         d3.select(this).attr("class", "countryEU");
+        //SET EU COUNTRY COLOR
         d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
+        //FADE IN COUNTRY NUMBERS
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0);
+        //DRAW COUNTRY TITLE
         d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
+
       }else{
-        //SET THIS AS ACTIVE COUNTRY
-        d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
+
+        //FADE OUT COUNTRY NUMBERS
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0).text("");
+        //DISABLE COUNTRY ACTIVE
         d3.select(".countryActive").attr("class","countryEU");
+        //REMOVE COUNTRY TITLE
         d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
+        //SET COUNTRY ACTIVE
         d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","#F47F5E");
 
         //SET SOME VARIABLES

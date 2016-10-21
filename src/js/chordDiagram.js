@@ -60,6 +60,7 @@ function drawChordDiagram () {
       .enter().append("svg:g")
         .attr("class", "group")
         .on("mouseover", mouseOverGroup)
+        .on("mousemove", mouseMoveGroup)
         .on("mouseout", mouseOutGroup)
         .on("click", onClickGroup);
 
@@ -70,6 +71,7 @@ function drawChordDiagram () {
     g.append("svg:text")
         .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
         .attr("dy", ".35em")
+        .attr("class", "selectDisallow")
         .style("font-family", "Open Sans, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;")
         .style("font-size", "0.6em")
         .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
@@ -86,6 +88,7 @@ function drawChordDiagram () {
             .style("fill", function(d) { return fill(d.target.index); })
             .attr("d", d3.svg.chord().radius(r0))
             .on("mouseover", mouseOverChord)
+            .on("mousemove", mouseMoveChord)
             .on("mouseout", mouseOutChord);
 
       function chordTip (d) {
@@ -117,14 +120,21 @@ function drawChordDiagram () {
 
         d3.select("#tooltip")
           .transition()
-          .delay(500)
           .duration(400)
           .ease("cubic")
-            .style("opacity", 0.8);
+            .style("opacity", 1);
+
+        d3.select(this).select("text").style("font-weight","900");
 
          chordPaths.classed("fade", function(p) {
            return p.source.index != i && p.target.index != i;
          });
+      }
+
+      function mouseMoveGroup (d) {
+        d3.select("#tooltip")
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY + 20) + "px");
       }
 
       function mouseOutGroup (d) {
@@ -132,13 +142,14 @@ function drawChordDiagram () {
         //HIDE TOOLTIP
         d3.select("#tooltip").style("visibility", "hidden");
         d3.selectAll(".fade")
-         .transition()
-         .duration(500)
-         .ease("cubic")
-         .style("opacity", 0.8);
+          .transition()
+          .duration(500)
+          .ease("cubic")
+          .style("opacity", 0.8);
         d3.selectAll("fade")
           .style("visibility", "hidden")
           .classed("fade", false);
+        d3.select(this).select("text").style("font-weight","500");
       }
 
       //CHORDS
@@ -155,6 +166,12 @@ function drawChordDiagram () {
         .html(chordTip(rdr(d)))
         .style("top", function () { return (d3.event.pageY + 50)+"px";})
         .style("left", function () { return (d3.event.pageX - 130)+"px";});
+      }
+
+      function mouseMoveChord (d) {
+        d3.select("#tooltip")
+          .style("left", (d3.event.pageX + 20) + "px")
+          .style("top", (d3.event.pageY + 20) + "px");
       }
 
       function mouseOutChord (d) {
