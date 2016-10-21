@@ -1,51 +1,69 @@
-    function drawMap () {
-      //MAKE THE SVG ELEMENT
-      var center, countries, height, path, projection, scale, svg, width, mapData;
-      width = 850;
-      height = 600;
-      center = [20,60];
-      scale = 1100;
-      projection = d3.geo.azimuthalEqualArea().scale(scale).translate([width / 2, 150]).center(center);
-      path = d3.geo.path().projection(projection);
-      svg = d3.select("#mapDiagram")
-              .append("svg")
-              .attr("height", height)
-              .attr("id", "mapContainer")
-              .attr("width", width)
-              .style("display","block")
-              .style("margin","auto");
+//DIASPORA MAP
+//-----------------------------------------------------------------------------
+function drawMap () {
 
-      countries = svg.append("g");
+  //DYNAMIC WIDTH
+  var margin = {top: 10, left: 10, bottom: 10, right: 10},
+    boxWidth = parseInt(d3.select('#mapDiagram').style('width')),
+    boxWidth = boxWidth - margin.left - margin.right,
+    boxRatio = 0.8,
+    boxHeight = boxWidth * boxRatio;;
 
-      //SET A GLOBAL EASING DURATION
-      var easingDuration = 500;
+  d3.select(window).on("resize", resizeMap);
+  
+  //GLOBAL EASING DURATION
+  var easingDuration = 500;
 
-      //IMPORT DATA AND DRAW THE MAP
-      d3.json("./data/map.json", function(data) {
-        countries.selectAll(".country")
-        .data(topojson.feature(data, data.objects.collection).features)
-        .enter()
-        .append("g")
-        .attr("class",function (d) {if (d.properties.EU_MEMBER === "1") {return "gCountryEU";}else {return "gCountry";}})
-        .attr("id", function (d) {return "g" + d.properties.NAME;})
-          .append("path")
-          .attr("class","country")
-          .attr("id", function (d) {return d.properties.NAME;})
-          .attr("d", path)
-          .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
-          .attr("class", "countryEU")
-          .on("mouseover", mouseover)
-          .on("mouseout", mouseout)
-          .on("click", onClick);
+  render ();
 
-        //MAKE TEXT CONTAINERS FOR COUNTRY NUMBERS
-        d3.selectAll(".gCountryEU").append("text")
-          .attr("class", "nrCountry selectDisallow disablePointer")
-          .attr("id", function (d) {return "nr" + d.properties.NAME;})
-          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-          .attr("dy", ".35em")
-          .style("font-weight", "bold")
-          .style("opacity", 0);
+  function render () {
+    
+    //MAIN SVG
+    var center, countries, path, projection, scale, svg, mapData;
+    center = [20,62];
+    scale = boxWidth * 1.4;
+    projection = d3.geo.azimuthalEqualArea()
+                   .scale(scale)
+                   .translate([boxWidth / 2, boxWidth/5])
+                   .center(center); 
+    path = d3.geo.path().projection(projection);
+    
+    svg = d3.select("#mapDiagram")
+        .append("svg")
+        .attr("height", boxHeight)
+        .attr("id", "mapContainer")
+        .attr("width", boxWidth)
+        .style("display","block")
+        .style("margin","auto");
+
+    countries = svg.append("g");
+
+    //IMPORT DATA AND DRAW THE MAP
+    d3.json("./data/map.json", function(data) {
+      countries.selectAll(".country")
+      .data(topojson.feature(data, data.objects.collection).features)
+      .enter()
+      .append("g")
+      .attr("class",function (d) {if (d.properties.EU_MEMBER === "1") {return "gCountryEU";}else {return "gCountry";}})
+      .attr("id", function (d) {return "g" + d.properties.NAME;})
+      .append("path")
+      .attr("class","country")
+      .attr("id", function (d) {return d.properties.NAME;})
+      .attr("d", path)
+      .filter(function (d) {if (d.properties.EU_MEMBER === "1") {return d;}})
+      .attr("class", "countryEU")
+      .on("mouseover", mouseover)
+      .on("mouseout", mouseout)
+      .on("click", onClick);
+
+      //MAKE TEXT CONTAINERS FOR COUNTRY NUMBERS
+      d3.selectAll(".gCountryEU").append("text")
+      .attr("class", "nrCountry selectDisallow disablePointer")
+      .attr("id", function (d) {return "nr" + d.properties.NAME;})
+      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .style("font-weight", "bold")
+      .style("opacity", 0);
 
       //IMPORT SECONDARY DIASPORA DATA AND ASSIGN TO COUNTRIES
       d3.json('./data/mapdata.json', function (data) {
@@ -58,49 +76,49 @@
           d3.select("#" + key).datum(function(d){
             d.diaspora = diasporaNumbers[key]; 
             return d;});
+          }
         }
-      }
+      });
     });
-    });
 
 
-      //MOUSE EVENTS
-      function mouseover (){
-        var currentSelection = d3.select(this);
+    //MOUSE EVENTS
+    function mouseover (){
+      var currentSelection = d3.select(this);
 
+      currentSelection.style("opacity","0.8");
+      d3.select("#tooltip")
+      .style("visibility", "visible")
+      .html("<p>"+ currentSelection.attr("id") + "</p>")
+      .style("top", function () { return (d3.event.pageY + 10)+"px";})
+      .style("left", function () { return (d3.event.pageX - 0)+"px";});
+    }
 
-        currentSelection.style("opacity","0.8");
-        d3.select("#tooltip")
-        .style("visibility", "visible")
-        .html("<p>"+ currentSelection.attr("id") + "</p>")
-        .style("top", function () { return (d3.event.pageY + 10)+"px";})
-        .style("left", function () { return (d3.event.pageX - 0)+"px";});
+    function mouseout() {
+      var currentSelection = d3.select(this);
+
+      if (currentSelection.classed("countryActive")){
+        currentSelection.style("opacity","1");
+      }else{
+        d3.select(this).attr("class", "countryEU");  
+        currentSelection.style("opacity","1");
       }
 
-      function mouseout() {
-        var currentSelection = d3.select(this);
-
-        if (currentSelection.classed("countryActive")){
-          currentSelection.style("opacity","1");
-        }else {
-          d3.select(this).attr("class", "countryEU");  
-          currentSelection.style("opacity","1");
-        }
-
-        d3.select("#tooltip").
-        style("visibility", "hidden");
-      }
+      d3.select("#tooltip").
+      style("visibility", "hidden");
+    }
 
 
     function onClick() {
       var initialClass = d3.select("#"+this.id).attr("class");
+
       //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
       if (initialClass === "countryActive"){
         d3.select(this).attr("class", "countryEU");
         d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0);
         d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
-      }else {
+      }else{
         //SET THIS AS ACTIVE COUNTRY
         d3.selectAll(".countryEU").transition().duration(easingDuration).ease("cubic").style("fill", "#217A89");
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0).text("");
@@ -173,3 +191,18 @@
       }
     }
   }
+
+  //REDRAW ON RESIZE
+  function resizeMap () {
+    // adjust things when the window size changes
+    boxWidth = parseInt(d3.select('#mapDiagram').style('width'));
+    boxWidth = boxWidth - margin.left - margin.right;
+    boxHeight = boxWidth * boxRatio;
+    
+    //remove current
+    d3.select("#mapContainer").remove();
+
+    //update svg
+    render();
+  }
+}
