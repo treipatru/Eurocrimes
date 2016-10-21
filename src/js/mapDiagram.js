@@ -5,9 +5,9 @@ function drawMap () {
   //DYNAMIC WIDTH
   var margin = {top: 10, left: 10, bottom: 10, right: 10},
     boxWidth = parseInt(d3.select('#mapDiagram').style('width')),
-    boxWidth = boxWidth - margin.left - margin.right,
-    boxRatio = 0.8,
-    boxHeight = boxWidth * boxRatio;;
+    // boxWidth = boxWidth - margin.left - margin.right,
+    boxRatio = 0.7,
+    boxHeight = boxWidth * boxRatio;
 
   d3.select(window).on("resize", resizeMap);
   
@@ -20,8 +20,8 @@ function drawMap () {
     
     //MAIN SVG
     var center, countries, path, projection, scale, svg, mapData;
-    center = [20,62];
-    scale = boxWidth * 1.4;
+    center = [20,58];
+    scale = boxWidth * 1.3;
     projection = d3.geo.azimuthalEqualArea()
                    .scale(scale)
                    .translate([boxWidth / 2, boxWidth/5])
@@ -196,7 +196,7 @@ function drawMap () {
   function resizeMap () {
     // adjust things when the window size changes
     boxWidth = parseInt(d3.select('#mapDiagram').style('width'));
-    boxWidth = boxWidth - margin.left - margin.right;
+    // boxWidth = boxWidth - margin.left - margin.right;
     boxHeight = boxWidth * boxRatio;
     
     //remove current
