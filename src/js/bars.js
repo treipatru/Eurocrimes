@@ -3,14 +3,13 @@
 function drawBarPrisoners () {
   
   //DYNAMIC WIDTH
-  var margin = {top: 10, left: 10, bottom: 10, right: 10},
+  var margin = {top: 10, bottom: 10},
       boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
-      boxWidth = boxWidth - margin.left - margin.right,
       boxRatio = 0.5;
 
   d3.select(window).on('resize', resizePris);
 
-  //MAKE THE SVG ELEMENT
+  //MAIN SVG
   var height, svg, barHeight, barSpacing, axisHeight;
   barHeight = 20;
   barSpacing = 8;
@@ -125,10 +124,10 @@ function drawBarPrisoners () {
     .text(function (d) {return d.country;});
   }
 
+  //REDRAW ON RESIZE
   function resizePris () {
     // adjust things when the window size changes
     boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
-    boxWidth = boxWidth - margin.left - margin.right;
     
     //remove current
     d3.select("#prisonersGrid").remove();
@@ -147,9 +146,8 @@ function drawBarPrisoners () {
 function drawBarIncome () {
   
   //DYNAMIC WIDTH
-  var margin = {top: 10, left: 10, bottom: 10, right: 10},
+  var margin = {top: 10, bottom: 10},
       boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
-      boxWidth = boxWidth - margin.left - margin.right,
       boxRatio = 0.5;
 
   d3.select(window).on('resize', resizeInc);
@@ -272,7 +270,6 @@ function drawBarIncome () {
   function resizeInc () {
     // adjust things when the window size changes
     boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
-    boxWidth = boxWidth - margin.left - margin.right;
     
     //remove current
     d3.select("#salaryGrid").remove();
