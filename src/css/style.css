@@ -678,3 +678,22 @@ path.chord {
   stroke-width: 0;
 }
 
+/*JAILPOP*/
+
+#jailPopContainer {
+  fill: blue;
+}
+
+.sqRomanians {
+  fill: #F58634;
+}
+
+.sqMorrocans {
+  fill: #EE2F5A;
+}
+.sqExpats {
+  fill: #8ABCB9;
+}
+.sqLocals {
+  fill: #97989A;
+}

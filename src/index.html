@@ -208,10 +208,12 @@
         <h2>EU JAIL POPULATION OVERVIEW</h2>
       </div>
       <div class="twelve columns"><img class="u-max-full-width" src="img/7-11-la-suta.jpg" alt="11%"></div>
-      <div class="twelve">
+      <div class="row twelve">
         <p>Expat prisoners count for around 68000 or 11% of the total prisoners in the EU - so remain a minority. This is data from 2014 against our data on Romania and Morocco from 2015 - so is only a broad estimate.</p>
       </div>
-      <div class="twelve columns"><img class="u-max-full-width" src="img/placeholder.jpg" alt="Prison Population"></div>
+      <div class="row twelve columns" id="jailPop">
+        <!-- <img class="u-max-full-width" src="img/placeholder.jpg" alt="Prison Population">-->
+      </div> 
       <div class="twelve">
         <p>The size of the prison population across the 27 states that have been or became EU members has remained almost static between 2002 and 2014. This oscillated between 60,000 and 65,000 for every year, according to Council of Europe figures</p>
         <p>This reveals that changes in the migrant population across the EU in the last 14 years have not led to an increase in convictions</p>
@@ -287,6 +289,7 @@
   <script src="js/chordDiagram.js"></script>
   <script src="js/mapDiagram.js"></script>
   <script src="js/bars.js"></script>
+  <script src="js/jailPop.js"></script>
   <script>
     window.onload = init();
 
@@ -295,6 +298,7 @@
       drawMap();
       drawBarPrisoners();
       drawBarIncome();
+      drawJailPop();
     }
   </script>
 
