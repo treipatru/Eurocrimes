@@ -708,15 +708,13 @@ path.chord {
 #jailPopContainer {
   fill: blue;
 }
-
 .sqRomanian {
-  fill: #F58634;
-}
-
-.sqMorrocan {
   fill: #EE2F5A;
 }
-.sqExpat {
+.sqEU {
+  fill: #F58634;
+}
+.sqForeign {
   fill: #8ABCB9;
 }
 .sqLocal {
@@ -727,3 +725,5 @@ path.chord {
   border-bottom: 1px solid #E2E2E2;
 }
 
+.chartTitle {font-size: 0.6em;}
+@media (min-width: 500px) {.chartTitle{font-size: 1em;}}
