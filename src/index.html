@@ -50,7 +50,7 @@
   <!-- FIRST CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve columns">
+      <div class="twelve columns cardTitle">
         <h2>FOREIGN PRISONERS ACROSS THE EU</h2>
       </div>
       <div class="twelve columns">
@@ -64,13 +64,20 @@
   <!-- SECOND CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve column">
-        <h2>EU EXPATS IMPRISONED</h2>
+      <div class="twelve column cardTitle removeBelow">
+        <h2 class="">EU EXPATS IMPRISONED</h2>
       </div>
-      <div class="twelve columns infoBox" id="chordInfo">
-        <p class="selectDisallow">Explore the chord diagram to find out more about foreign nationals in EU prisons. Select a country to see where its diaspora is imprisoned</p>
+      <div class="hideLow">
+        <div class="twelve columns infoBox removeAbove" id="chordInfo">
+          <p>Explore the chord diagram to find out more about foreign nationals in EU prisons. Select a country to see where its diaspora is imprisoned</p>
+        </div>
+        <div class="twelve column" id="chordDiagram"></div>
       </div>
-      <div class="twelve column" id="chordDiagram"></div>
+      <div class="showLow">
+        <div class="twelve columns lowRes">
+          <p>Sorry, there's not enough screen space to display the graphic. Try rotating your device or accessing the page from another device.</p>
+        </div>
+      </div>
     </div>
 
 
@@ -79,14 +86,15 @@
   <!-- THIRD CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve columns">
-        <h2>WHAT ABOUT ROMANIANS?</h2>
+      <div class="twelve columns cardTitle removeBelow">
+        <h2 class="removeBelow">WHAT ABOUT ROMANIANS?</h2>
+      </div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="./img/2-highlight-11400.jpg" alt="11400 Romanians in EU jails">
       </div>
       <div class="twelve columns" >
         <p>Around 11400 Romanians were in jails in EU member states in 2015 (France: 2014), according to data requested from 25 member states</p>
         <p>This is journalistic, not academic research, and is an estimate of the real number, because many countries have different reporting strategies. For an in-depth look into the methodology, <a href="http://www.theblacksea.eu/index.php?idT=86&idC=96&idRec=1237&recType=story">click here</a>.</p>
       </div>
-      <div class="twelve columns"><img class="u-max-full-width" src="./img/2-highlight-11422.jpg" alt="11422 Romanians in EU jails"></div>
       <div class="twelve columns"><img class="u-max-full-width center" src="img/3-ro-imprisoned-abroad-home.jpg" alt="Romanian prisoners home & abroad"></div>
       <div class="twelve columns">
         <p>There were 28334 Romanians in Prison in Romania and around 11400 in the EU. The crime rate is around three times higher (0.39 per cent) for Romanians abroad than Romanians at home (0.13 per cent)</p>
@@ -99,19 +107,16 @@
   <!-- FOURTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve">
-        <h2>SHOULD EUROPE BE SCARED OF ROMANIANS?</h2>
+      <div class="twelve columns cardTitle removeBelow">
+        <h2 class="removeBelow">SHOULD EUROPE BE SCARED OF ROMANIANS?</h2>
       </div>
-      <div class="eight columns">
-        <p>No. There are 2.9 million of Romanians living outside of their home country in the EU</p>
-        <p>They are the second largest expat population in the EU - after Poland</p>
-        <p>There is no crime wave from Romania</p>
-        <p>Only one in every 256 Romanian expats is in jail</p>
-      </div>
-      <div class="four columns">
-        <img src="./img/4-should-europe-be-scared-350px.jpg" alt="Top Nationalities Imprisoned in EU" class="u-max-full-width">
-      </div>
-      <div class="twelve columns"><img class="u-max-full-width" src="img/5-1236-ratio.jpg" alt="1 in 236 expats imprisoned is Romanian."></div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/5-1236-ratio.jpg" alt="1 in 236 expats imprisoned is Romanian."></div>
+        <div class="twelve columns" id="dracula">
+          <p>No. There are 2.9 million of Romanians living outside of their home country in the EU</p>
+          <p>They are the second largest expat population in the EU - after Poland</p>
+          <p>There is no crime wave from Romania</p>
+          <p>Only one in every 256 Romanian expats is in jail</p>
+        </div>
     </div>
 
 
@@ -120,14 +125,21 @@
   <!-- FIFTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve columns">
+      <div class="twelve columns cardTitle removeBelow">
         <h2>MIGRATION IN THE EU</h2>
       </div>
-      <div class="twelve columns infoBox" id="mapInfo">
-        <p class="selectDisallow">Explore the map to see migration relationships across the EU. Select a country to view where its diaspora is going</p>
+      <div class="hideLow">
+        <div class="twelve columns infoBox removeAbove" id="mapInfo">
+          <p>Explore the map to see migration relationships across the EU. Select a country to view where its diaspora is going</p>
+        </div>
+        <div class="row">
+          <div class="twelve columns" id="mapDiagram"></div>
+        </div>
       </div>
-      <div class="row">
-        <div class="twelve columns" id="mapDiagram"></div>
+      <div class="showLow">
+        <div class="twelve columns lowRes">
+          <p>Sorry, there's not enough screen space to display the graphic. Try rotating your device or accessing the page from another device.</p>
+        </div>
       </div>
     </div>
 
@@ -137,7 +149,7 @@
   <!-- SIXTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve">
+      <div class="twelve columns cardTitle">
         <h2>FEW MAJOR CRIMES</h2>
       </div>
       <div class="row">
@@ -164,7 +176,7 @@
   <!-- SEVENTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card" id="poverty">
-      <div class="twelve">
+      <div class="twelve columns cardTitle">
         <h2>POVERTY IS A BIG CAUSE</h2>
       </div>
       <div class="twelve">
@@ -188,10 +200,10 @@
   <!-- EIGHTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve">
-        <h2>BUT THIS IS EXPENSIVE</h2>
+      <div class="twelve columns cardTitle removeBelow">
+        <h2 class="removeBelow">BUT THIS IS EXPENSIVE</h2>
       </div>
-      <div class="twelve columns"><img class="u-max-full-width" src="img/10-highlight-99-eur.jpg" alt="99 EUR"></div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/10-highlight-99-eur.jpg" alt="99 EUR"></div>
       <div class="twelve">
         <p>The average amount spent per day on a European prisoner is 99&euro;, according to the Council of Europe</p>
         <p>Therefore the cost of Romanians in jails in the EU is around 400 million Euro per year</p>
@@ -204,10 +216,10 @@
   <!-- NINTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve">
-        <h2>EU JAIL POPULATION OVERVIEW</h2>
+      <div class="twelve columns cardTitle removeBelow">
+        <h2 class="removeBelow">EU JAIL POPULATION OVERVIEW</h2>
       </div>
-      <div class="twelve columns"><img class="u-max-full-width" src="img/7-11-la-suta.jpg" alt="11%"></div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/7-11-la-suta.jpg" alt="11%"></div>
       <div class="row twelve">
         <p>Expat prisoners count for around 68000 or 11% of the total prisoners in the EU - so remain a minority. This is data from 2014 against our data on Romania and Morocco from 2015 - so is only a broad estimate.</p>
       </div>
@@ -229,22 +241,22 @@
   <!-- TENTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row card">
-      <div class="twelve columns">
+      <div class="twelve columns cardTitle">
         <h2>MORE</h2>
       </div>
       <div class="row twelve columns">
         <div class="four columns moreBit">
-          <img src="http://placehold.it/200x200" class="u-max-full-width">
+          <a href="#"><img src="img/thumbs1.jpg" class="u-max-full-width"></a>
           <h6>“It is so painful to know we are victims”</h6>
           <p>Trafficked girls from Romania to Spain reveal path from tragedy to recovery</p>
         </div>
         <div class="four columns moreBit">
-          <img src="http://placehold.it/200x200" class="u-max-full-width">
+          <a href="#"><img src="img/thumbs2.jpg" class="u-max-full-width"></a>
           <h6>Anarchist paradise</h6>
           <p>The Roma families squatting in the Italian contemporary art museum</p>
         </div>
         <div class="four columns moreBit">
-          <img src="http://placehold.it/200x200" class="u-max-full-width">
+          <a href="#"><img src="img/thumbs3.jpg" class="u-max-full-width"></a>
           <h6>Abuse at Europe’s top transport hub</h6>
           <p>Kid beggars turn to prostitution in Rome’s Termini station</p>
         </div>

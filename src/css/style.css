@@ -157,9 +157,11 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: #007684;
+  text-decoration: none;
+  border-bottom: 1px dotted;}
 a:hover {
-  color: #0FA0CE; }
+  color: #fc6300; }
 
 
 /* Buttons
@@ -458,6 +460,17 @@ there.
   padding: 0.5em 1.25em 0.5em 1.25em;
 }
 
+.removeBelow {
+  margin-bottom: 0!important;
+  padding-bottom: 0!important;
+  border-bottom: none!important;
+}
+
+.removeAbove {
+  margin-top: 0!important;
+  padding-top: 0 !important;
+}
+
 .infoBit img{
   display: block;
   margin: auto;
@@ -488,28 +501,15 @@ there.
   visibility: hidden;
 }
 
+
+/*CHART INFO BOXES*/
 .infoBox {
   display: block;
 }
 
-.infoBox p:hover{
-  background-color: #FFFBAF;
-  -webkit-transition: background 500ms ease-in;
-  -moz-transition: background 500ms ease-in;
-  -ms-transition: background 500ms ease-in;
-  -o-transition: background 500ms ease-in;
-  transition: background 500ms ease-in;
-}
-
-.infoBox p{
-  background-color: #E2E2E2;
-  background-image: url("../img/infoBoxClick.png");
-  background-repeat: no-repeat;
-  background-position: 0.3em 50%;
-  border-radius: 4px;
+.infoBox p {
   font-size: 0.6em;
-  padding: 1em 1em 0.7em 2.7em;
-  margin: 0;
+  margin-top: -1em;
 }
 
 .team p{
@@ -548,6 +548,31 @@ there.
   fill: whit
   opacity: 0.0;
 }
+
+
+#dracula{background: none;} 
+
+@media (min-width: 550px) {
+  #dracula {
+    background: url("../img/4-should-europe-be-scared-350px.jpg") no-repeat;
+    background-position: 96% 50%;
+  }
+  #dracula p{
+    margin-right: 124px;
+  }
+}
+
+/*HIDE CONTAINER IN LOW RES*/
+.hideLow {display: none;}
+@media (min-width: 900px) {.hideLow{display: block;}}
+/*SHOW CONTAINER IN LOW RES*/
+.showLow {display: block;}
+@media (min-width: 900px) {.showLow{display: none;}}
+
+.lowRes {
+  font-size: 0.7em;
+}
+
 
 /* CHORD DIAGRAM
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -684,16 +709,21 @@ path.chord {
   fill: blue;
 }
 
-.sqRomanians {
+.sqRomanian {
   fill: #F58634;
 }
 
-.sqMorrocans {
+.sqMorrocan {
   fill: #EE2F5A;
 }
-.sqExpats {
+.sqExpat {
   fill: #8ABCB9;
 }
-.sqLocals {
+.sqLocal {
   fill: #97989A;
 }
+
+.cardTitle h2{
+  border-bottom: 1px solid #E2E2E2;
+}
+
