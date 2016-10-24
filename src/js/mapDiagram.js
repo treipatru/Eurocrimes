@@ -1,5 +1,13 @@
-//DIASPORA MAP
 //-----------------------------------------------------------------------------
+//
+// EU DIASPORA MAP
+//
+//-----------------------------------------------------------------------------
+
+
+
+
+
 function drawMap () {
 
   //DYNAMIC WIDTH
@@ -8,8 +16,6 @@ function drawMap () {
     // boxWidth = boxWidth - margin.left - margin.right,
     boxRatio = 0.7,
     boxHeight = boxWidth * boxRatio;
-
-  d3.select(window).on("resize", resizeMap);
   
   //GLOBAL EASING DURATION
   var easingDuration = 500;
@@ -90,6 +96,7 @@ function drawMap () {
 
       if (!d3.selectAll(".countryActive").empty()) {
         currentSelection.style("opacity","0.8");
+
         d3.select("#tooltip")
           .style("visibility", "visible")
           .html("<p>"+ currentSelection.attr("id") + "</p>")
@@ -97,11 +104,13 @@ function drawMap () {
           .style("left", function () { return (d3.event.pageX - 0)+"px";});
 
 
-          // var newObj = d3.select(".countryActive").datum("diaspora");
-          // var tmpName = currentSelection.attr("id");
+          // var currentId = currentSelection.attr("id");String(currentId);
+          // var currentObj = currentSelection.data();
+          // var currentDiaspora = currentObj[0].diaspora;
+          // var number = currentDiaspora.Austria;
 
-          // console.log(tmpName);
-          // console.log(newObj.diaspora[tmpName]);
+
+          
 
       } else {
 
@@ -227,19 +236,5 @@ function drawMap () {
         }
       }
     }
-  }
-
-  //REDRAW ON RESIZE
-  function resizeMap () {
-    // adjust things when the window size changes
-    boxWidth = parseInt(d3.select('#mapDiagram').style('width'));
-    // boxWidth = boxWidth - margin.left - margin.right;
-    boxHeight = boxWidth * boxRatio;
-    
-    //remove current
-    d3.select("#mapContainer").remove();
-
-    //update svg
-    render();
   }
 }

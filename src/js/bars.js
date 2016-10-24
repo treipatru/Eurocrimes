@@ -1,13 +1,21 @@
-//EXPATS IN JAIL/COUNTRY OF ORIGIN
 //-----------------------------------------------------------------------------
+//
+// BAR CHARTS
+//
+//-----------------------------------------------------------------------------
+
+
+
+
+
+//EXPATS IN JAIL/COUNTRY OF ORIGIN
+//------------------------------------------
 function drawBarPrisoners () {
   
   //DYNAMIC WIDTH
   var margin = {top: 10, bottom: 10},
-      boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
-      boxRatio = 0.5;
-
-  d3.select(window).on('resize', resizePris);
+      boxWidth = parseInt(d3.select("#barPrisoners").style("width")),
+      boxRatio = 1;
 
   //MAIN SVG
   var height, svg, barHeight, barSpacing, axisHeight;
@@ -18,18 +26,17 @@ function drawBarPrisoners () {
   .attr("id","prisonersContainer")
   .style("display","block")
   .style("margin","auto");
-  
-  var x = d3.scale.linear()
-  .range([0, boxWidth]);
-
-  var xAxis = d3.svg.axis()
-  .scale(x)
-  .orient("bottom")
-  .ticks(5);
 
   render();
   
   function render () {
+
+    var x = d3.scale.linear().range([0, boxWidth]);
+
+    var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .orient("bottom")
+                  .ticks(5);
 
     var chart = d3.select("#prisonersContainer").attr("width", boxWidth);
     chart.append("g").attr("id","prisonersGrid");
@@ -38,7 +45,7 @@ function drawBarPrisoners () {
     //IMPORT DATA
     d3.csv("data/bar-percentage.csv", type, function (error, data) {
     	x.domain([0, d3.max(data, function(d) { return d.percentage; })]);
-    	var height = ((barHeight + barSpacing) * data.length) + axisHeight;
+    	height = (((barHeight + barSpacing) * data.length) + axisHeight) * boxRatio;
     	chart.attr("height", height);
 
 
@@ -123,34 +130,19 @@ function drawBarPrisoners () {
     .style("opacity", "1")
     .text(function (d) {return d.country;});
   }
-
-  //REDRAW ON RESIZE
-  function resizePris () {
-    // adjust things when the window size changes
-    boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
-    
-    //remove current
-    d3.select("#prisonersGrid").remove();
-    d3.select("#prisonersBars").remove();
-
-    //update svg
-    render();
-  }
 }
 
 
 
 
 //AVERAGE INCOME PER COUNTRY OF ORIGIN
-//-----------------------------------------------------------------------------
+//------------------------------------------
 function drawBarIncome () {
   
   //DYNAMIC WIDTH
   var margin = {top: 10, bottom: 10},
-      boxWidth = parseInt(d3.select('#barPrisoners').style('width')),
+      boxWidth = parseInt(d3.select("#barPrisoners").style("width")),
       boxRatio = 0.5;
-
-  d3.select(window).on('resize', resizeInc);
 
   //MAKE THE SVG ELEMENT
   var height, svg, barHeight, barSpacing, axisHeight;
@@ -265,17 +257,5 @@ function drawBarIncome () {
     .duration(150)
     .style("opacity", "1")
     .text(function (d) {return d.country;});
-  }
-
-  function resizeInc () {
-    // adjust things when the window size changes
-    boxWidth = parseInt(d3.select('#barPrisoners').style('width'));
-    
-    //remove current
-    d3.select("#salaryGrid").remove();
-    d3.select("#salaryBars").remove();
-
-    //update svg
-    render();
   }
 }
