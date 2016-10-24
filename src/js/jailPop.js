@@ -5,33 +5,24 @@
 //-----------------------------------------------------------------------------
 
 
-
-
-
 function drawJailPop () {
-  var dataSet = [{"Romanian" : 11400},
-  		     {"EU" : 68000},
-  		     {"Foreign" : 113500},
-  		     {"Local" : 506500}];
+  var dataSet = [{"Romanian" : 2},
+  		     {"EU Expat" : 10},
+  		     {"Foreign" : 16},
+  		     {"Local" : 72}];
 
-  var peopleSquare = 1500; //PEOPLE PER SQUARE
-  var squareSize = 20;
-  var squarePadding = 0.5;
-  var internalMargins = 20;
-  var titleSize = 20;
-  var sqLabel = 50;
-  var heightAdjust = 30;
+  var peopleSquare = 1; //PEOPLE PER SQUARE
+  var squarePadding = 20;
+  var squareSize = 0;//USED LATER
+  var sqSizeProp = 20;//SQUARES ARE DRAWN PROPORTIONALLY TO SCREEN
+  var internalMargins = 0;
+  var titleSize = 20;//TITLE HEIGHT
 
   //DYNAMIC WIDTH
-  var margin = {top: 10, left: 20, bottom: 20, right: 10},
-    boxWidth = parseInt(d3.select('#jailPop').style('width')),
-    boxWidth = boxWidth - margin.left - margin.right - internalMargins,
-    boxRatio = 0.7,
-    boxHeight = 0;
-
-  d3.select(window).on("resize", resizeJailPop);
-
-  render();
+  var margin = {top: 20, left: 0, bottom: 20, right: 35};
+  var boxWidth = parseInt(d3.select("#jailPop").style("width")),
+      boxWidth = boxWidth - margin.left - margin.right,
+    	boxHeight = margin.top + margin.bottom;
 
   function render () {
   	//MAKE SVG
@@ -43,6 +34,8 @@ function drawJailPop () {
   		    	.style("display","block")
   		    	.style("margin","auto");
 	
+	squareSize = svg.attr("width")/100 + sqSizeProp;
+
 	//BACKGROUND
 	// svg.append("rect")
 	//    .attr("width", "100%")
@@ -53,7 +46,7 @@ function drawJailPop () {
 	svg.append("text")
 	   .attr("id","jailPopTitle")
 	   .attr("x", boxWidth/2)
-	   .attr("y", internalMargins+margin.top)
+	   .attr("y", margin.top)
 	   .attr("class", "chartTitle")
 	   .attr("text-anchor","middle")
 	   .style("fill","#606062")
@@ -63,23 +56,24 @@ function drawJailPop () {
   	var squares = svg.selectAll("g").data(dataSet)
 		  	     .enter()
 		  	   .append("g")
-		  	     .attr("id", function (d){return Object.keys(d);});
+		  	     .attr("id", function (d){return String(Object.keys(d)).replace(/ /g,"");});
 	
 	//SET NEGATIVE STARTING X
-	var currentX = -(squareSize + squarePadding) + internalMargins;
+	var currentX = -(squareSize + squarePadding);
 	var sqRow = 0;
 	var computedH = 0;
 	//DRAW SQUARES
 	squares.each(function(d, i) {
 		var name = String(Object.keys(d));
 		var number = d3.format("f")(d[name] / peopleSquare);
+		var className = String(name).replace(/ /g,"");
 
 		for (var z = 0; z < number; z++){
-			d3.select("#"+ name)
+			d3.select("#"+ className)
 			  .append("rect")
-			  .attr("class", "sq" + name + " jailPopSquares")
+			  .attr("class", "sq" + className + " jailPopSquares")
 			  .attr("x", getX())
-			  .attr("y", getY() + internalMargins)
+			  .attr("y", getY() + titleSize)
 			  .attr("width", squareSize)
 			  .attr("height", squareSize)
 			  .on("mouseover", mouseoverSq)
@@ -106,31 +100,35 @@ function drawJailPop () {
 
 	});
 	
-	//SET HEIGHT
-	d3.select("#jailPopContainer").attr("height", (sqRow * heightAdjust) + internalMargins);
-	
+	//SET NEW HEIGHT --ADD ROW FOR CHART LEGEND
+	sqRow ++;
+	computedH = sqRow * (squareSize + squarePadding) + titleSize;
+	d3.select("#jailPopContainer").attr("height", (computedH) + margin.top + margin.bottom + titleSize);
+
 	d3.select("#jailPopContainer").append("g").attr("id","jailPopLegend")
 	.selectAll("g")
 	.data(dataSet)
 	.enter()
 	.append("g")
-	.attr("transform", function (d, i) { return "translate(" + (i * (squareSize + squarePadding)) + "," + (computedH + margin.top + internalMargins + titleSize) +")";})
+	.attr("id", function (d){return String(Object.keys(d));})
+	.attr("transform", function (d, i) { return "translate(" + (i * (squareSize + squarePadding)) + "," + (computedH + titleSize) +")";})
 	.on("mouseover", mouseoverLabel)
 	.on("mouseout", mouseoutLabel)
 	.append("rect")
-	.attr("x", internalMargins)
-	.attr("y", internalMargins)
+	.attr("x", 0)
+	.attr("y", 0)
 	.attr("width", squareSize)
 	.attr("height", squareSize)
-	.attr("class", function (d){return "sq" + Object.keys(d);});
+	.attr("class", function (d){return "sq" + String(Object.keys(d)).replace(/ /g,"");});
 	
 	//APPEND LABELS
 	d3.select("#jailPopLegend").selectAll("g").each(function (d,i) {
 		d3.select(this)
 		  .append("text")
-		  .attr("class", function (d){return "selectDisallow sq" + Object.keys(d);})
-		  .attr("x", internalMargins + squareSize + 3)
-		  .attr("y", 35)
+		  .attr("class", function (d){return "selectDisallow sq" + String(Object.keys(d)).replace(/ /g,"");})
+		  .attr("x", squareSize + 3)
+		  .attr("y", squareSize/2)
+		  .attr("dy", ".35em")
 		  .attr("text-anchor","left")
 		  .style("fill", "#606062")
 		  .style("font-size", "0.7em")
@@ -140,7 +138,7 @@ function drawJailPop () {
 	//REPOSITION GROUPS TO FIT
 	var prevTextW = 0;
 	d3.select("#jailPopLegend").selectAll("g").each(function (d,i) {
-		var textWidth = d3.select(this).select("text").node().getBBox().width * 1.3;
+		var textWidth = d3.select(this).select("text").node().getBBox().width * 1 + 15;
 		var nextElement = d3.select(this.nextElementSibling);
 
 
@@ -172,7 +170,8 @@ function drawJailPop () {
 
     d3.select("#tooltip")
       .style("visibility", "visible")
-      .html("<p>"+ peopleSquare + " " + String(Object.keys(data)) + " Prisoners" +"</p>")
+      .html("<p>1% of Prisoners</p>")
+      // .html("<p>" + String(Object.keys(data)) + " - 1% Of Prisoners" +"</p>")
       .style("top", function () { return (d3.event.pageY + 10)+"px";})
       .style("left", function () { return (d3.event.pageX - 0)+"px";});
   }
@@ -196,34 +195,34 @@ function drawJailPop () {
 
   function mouseoverLabel (){
     var currentSelection = d3.select(this);
-    currentSelection.style("font-weight","800");
-    d3.select("#" + currentSelection.text())
-    	.transition()
-    	.duration(500)
-    	.ease("bounce")
-    	.style("opacity","0.7");
+    var currentName = currentSelection.attr("id").replace(/ /g,"");
+    var currentValue = d3.select("#" + currentName).selectAll("rect").size();
+    currentSelection.select("text")
+    			  .text(currentValue + "%")
+    			  .style("font-weight","800");   
+
+    d3.select("#" + currentName)
+    .transition()
+    .duration(500)
+    .ease("bounce")
+    .style("opacity","0.3");
+    
   }
 
   function mouseoutLabel (){
     var currentSelection = d3.select(this);
-    currentSelection.style("font-weight","500");
-    d3.select("#" + currentSelection.text())
+    var currentName = currentSelection.attr("id");
+
+    currentSelection.select("text")
+    			  .text(currentName)
+    			  .style("font-weight","500");
+
+    d3.selectAll("#" + currentName.replace(/ /g,""))
     	.transition()
     	.duration(250)
     	.ease("cubic")
     	.style("opacity","1");
   }
 
-  //REDRAW ON RESIZE
-  function resizeJailPop () {
-    // adjust things when the window size changes
-    boxWidth = parseInt(d3.select("#jailPop").style('width'));
-    boxHeight = boxWidth * boxRatio;
-    
-    //remove current
-    d3.select("#jailPopContainer").remove();
-
-    //update svg
-    render();
-  }
+  render();
 }
