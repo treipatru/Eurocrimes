@@ -37,10 +37,11 @@
   <!-- TITLE
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <div class="row">
-      <div class="twelve columns">
+      <div class="twelve columns" id="pageHeader">
         <div class="twelve columns" id="pageTitle"><img class="u-max-full-width" src="./img/0-logo.png" alt="EUROCRIMES"></div>
         <p>Romania is the European country with the greatest number of its expats in prison in the EU, while Morocco has the highest number of prisoners</p>
         <p>An international team of journalists across six nations with data from 25 countries has revealed these stats - and investigated why this is happening.</p>
+        <p class ="lowRes showLow">Some of the data visualizations are not displayed because there is not enough screen space. Try switching to landscape or load this page from another device.</p>
       </div>
     </div>
 
@@ -63,20 +64,15 @@
 
   <!-- SECOND CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="row card">
+    <div class="row card hideLow">
       <div class="twelve column cardTitle removeBelow">
         <h2 class="">EU EXPATS IMPRISONED</h2>
       </div>
-      <div class="hideLow">
+      <div>
         <div class="twelve columns infoBox removeAbove" id="chordInfo">
           <p>Explore the chord diagram to find out more about foreign nationals in EU prisons. Select a country to see where its diaspora is imprisoned</p>
         </div>
         <div class="twelve column" id="chordDiagram"></div>
-      </div>
-      <div class="showLow">
-        <div class="twelve columns lowRes">
-          <p>Sorry, there's not enough screen space to display the graphic. Try rotating your device or accessing the page from another device.</p>
-        </div>
       </div>
     </div>
 
@@ -93,7 +89,7 @@
       </div>
       <div class="twelve columns" >
         <p>Around 11400 Romanians were in jails in EU member states in 2015 (France: 2014), according to data requested from 25 member states</p>
-        <p>This is journalistic, not academic research, and is an estimate of the real number, because many countries have different reporting strategies. For an in-depth look into the methodology, <a href="http://www.theblacksea.eu/index.php?idT=86&idC=96&idRec=1237&recType=story">click here</a>.</p>
+        <p>This is journalistic, not academic research, and is an estimate of the real number, because many countries have different reporting strategies. For an in-depth look into the methodology, <a href="http://www.theblacksea.eu/index.php?idT=86&idC=96&idRec=1237&recType=story" target="_blank">click here</a>.</p>
       </div>
       <div class="twelve columns"><img class="u-max-full-width center" src="img/3-ro-imprisoned-abroad-home.jpg" alt="Romanian prisoners home & abroad"></div>
       <div class="twelve columns">
@@ -124,21 +120,16 @@
 
   <!-- FIFTH CARD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="row card">
+    <div class="row card hideLow">
       <div class="twelve columns cardTitle removeBelow">
         <h2>MIGRATION IN THE EU</h2>
       </div>
-      <div class="hideLow">
+      <div>
         <div class="twelve columns infoBox removeAbove" id="mapInfo">
           <p>Explore the map to see migration relationships across the EU. Select a country to view where its diaspora is going</p>
         </div>
         <div class="row">
           <div class="twelve columns" id="mapDiagram"></div>
-        </div>
-      </div>
-      <div class="showLow">
-        <div class="twelve columns lowRes">
-          <p>Sorry, there's not enough screen space to display the graphic. Try rotating your device or accessing the page from another device.</p>
         </div>
       </div>
     </div>
@@ -184,11 +175,11 @@
         <p>These charts show how there is an inverse relationship between the number of criminals abroad, and the average income in their own nation</p>
         <p>When we look at the number of criminals as a percentage of their expat population, Romania does not come in the top spot - that belongs to Lithuania</p>
       </div>
-      <div class="six columns bars">
+      <div class="six columns bars" id="prisonersWidth">
         <p>Expats in jail per country of origin(&percnt;)</p>
         <div id="barPrisoners"></div>
       </div>
-      <div class="six columns bars">
+      <div class="six columns bars" id="incomeWidth">
         <p>Average income per country of origin(&euro;)</p>
         <div id="barIncome"></div>
       </div>
@@ -231,8 +222,6 @@
         <p>The size of the prison population across the 27 states that have been or became EU members has remained almost static between 2002 and 2014. This oscillated between 60,000 and 65,000 for every year, according to Council of Europe figures</p>
         <p>This reveals that changes in the migrant population across the EU in the last 14 years have not led to an increase in convictions</p>
         <p class="quote">“There are so many different forms of immigration and waves of people who migrate and under different circumstances and how well received they are in society or how prepared that society is, so it’s impossible to say whether this leads to less or more crime. We have to look at circumstances and different conditions in which immigration is taking place. It can lead to both outcomes.” Cristian Walburg, doctor in Criminal Science at Westphalian Wilhelm University, Munster.</p>
-        <p>We have looked behind these statistics to analyse why Romania and Lithuania have come top in the EU crime stats</p>
-        <p>From on the ground reportage in Italy, Spain, Romania, Germany, Lithuania and the UK, we present features about victims of human trafficking and drug addiction, interviews with begging gangs, thieves, career criminals, police officers, criminologists, charity workers and mafia experts, who have helped us wrestle with the problems and the solutions.</p>
       </div>
     </div>
 
@@ -244,6 +233,10 @@
     <div class="row card">
       <div class="twelve columns cardTitle">
         <h2>MORE</h2>
+      </div>
+      <div class="twelve columns">
+        <p>We have looked behind these statistics to analyse why Romania and Lithuania have come top in the EU crime stats</p>
+        <p>From on the ground reportage in Italy, Spain, Romania, Germany, Lithuania and the UK, we present features about victims of human trafficking and drug addiction, interviews with begging gangs, thieves, career criminals, police officers, criminologists, charity workers and mafia experts, who have helped us wrestle with the problems and the solutions.</p>
       </div>
       <div class="row twelve columns">
         <a href="#"><div class="four columns moreBit">
@@ -271,17 +264,26 @@
         <p>Vlad Odobescu (Romania): text, data collection</p>
         <p>Michael Bird (Romania/UK): text, photos, data collection</p>
         <p>Cosmin Pojoranu (Romania): graphics</p>
-        <p>Andrei Mocanca (Romania): infographics</p>
+        <p>Andrei Mocanca (Romania): data visualization</p>
         <p>Cecilia Ferrara (Italy): text</p>
       </div>
       <div class="six columns team">
         <p>Feliciano Tisera (Spain): text</p>
-        <p>Sorina Vasilica (Romania): illustrations</p>
+        <p>Sorina Vazelina (Romania): illustrations</p>
         <p>Paulius Ramanauskas (Lithuania): text</p>
         <p>Šarūnas Černiauskas (Lithuania): text</p>
         <p>Sigute Limontaite (UK/Germany): text</p>
       </div>
-      <div class="twelve columns team"><p>With thanks to Inga Springe (Latvia), Giulio Rubino (Italy), Trine Smistrup (Netherlands)</p></div>
+      <div class="twelve columns team">
+        <p>With thanks to Inga Springe (Latvia), Giulio Rubino (Italy), Trine Smistrup (Netherlands)</p>
+        <hr>
+      </div>
+      <div class="six columns">
+        <img class="u-max-full-width" src="img/journo-fund-eu.jpg" alt="Journalism Fund EU">
+      </div>
+      <div class="six columns">
+      <p>This project was made with the support of <a href="http://www.journalismfund.eu/" target="_blank">Journalism Fund</a></p>
+      </div>
     </div>
 
 
@@ -299,6 +301,7 @@
   <script src="lib/d3.v3.min.js"></script>
   <script src="lib/underscore-min.js"></script>
   <script src="lib/topojson.v1.min.js"></script>
+  <script src="js/_extras.js"></script>
   <script src="js/chordDiagram.js"></script>
   <script src="js/mapDiagram.js"></script>
   <script src="js/bars.js"></script>

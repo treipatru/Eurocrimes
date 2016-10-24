@@ -44,14 +44,14 @@
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
-    width: 85%;
+    width: 90%;
     padding: 0; }
 }
 
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 80%; }
+    width: 90%; }
   .column,
   .columns {
     /*margin-left: 4%;*/ }
@@ -420,9 +420,13 @@ there.
 
 
 #pageTitle {
-  margin-top: 7%;
+  margin: 5% 0 5% 0;
   padding-bottom: 1%;
   border-bottom: 10px solid #067A88;
+}
+
+#pageHeader {
+  margin-bottom: 2%;
 }
 
 
@@ -558,7 +562,7 @@ there.
     background-position: 96% 50%;
   }
   #dracula p{
-    margin-right: 124px;
+    margin-right: 25%;
   }
 }
 
@@ -570,7 +574,8 @@ there.
 @media (min-width: 900px) {.showLow{display: none;}}
 
 .lowRes {
-  font-size: 0.7em;
+  color: #c12600;
+  font-size: 0.6em;
 }
 
 
@@ -711,7 +716,7 @@ path.chord {
 .sqRomanian {
   fill: #EE2F5A;
 }
-.sqEU {
+.sqEUExpats {
   fill: #F58634;
 }
 .sqForeign {
