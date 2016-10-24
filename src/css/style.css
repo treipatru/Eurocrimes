@@ -375,10 +375,10 @@ form {
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
-  margin-top: 3rem;
-  margin-bottom: 3.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px dotted #E1E1E1; }
 
 
 /* Clearing
@@ -497,6 +497,7 @@ there.
 .center {
   display: block;
   margin: auto;
+  text-align: center;
 }
 
 .anchor {
@@ -520,6 +521,10 @@ there.
   font-size: 0.6em;
 }
 
+.team img{
+    margin: 0 auto;
+    display: block;
+}
 .moreBit img{
   display: block;
   margin: auto;
@@ -716,7 +721,7 @@ path.chord {
 .sqRomanian {
   fill: #EE2F5A;
 }
-.sqEUExpats {
+.sqEUExpat {
   fill: #F58634;
 }
 .sqForeign {
