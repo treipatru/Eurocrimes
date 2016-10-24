@@ -125,7 +125,7 @@ function drawJailPop () {
 	d3.select("#jailPopLegend").selectAll("g").each(function (d,i) {
 		d3.select(this)
 		  .append("text")
-		  .attr("class", function (d){return "selectDisallow sq" + String(Object.keys(d)).replace(/ /g,"");})
+		  .attr("class", function (d){return "disablePointer selectDisallow sq" + String(Object.keys(d)).replace(/ /g,"");})
 		  .attr("x", squareSize + 3)
 		  .attr("y", squareSize/2)
 		  .attr("dy", ".35em")
