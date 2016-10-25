@@ -12,10 +12,17 @@
 //REFRESH ON RESIZE
 //-----------------------------------------------------------------------------
 var resizeId;
+var iniScrWidth = screen.width;console.log(iniScrWidth);
+
 function resizeRefresh () {
-    clearTimeout(resizeId);
+  clearTimeout(resizeId);
+  if (iniScrWidth !== screen.width) {
     resizeId = setTimeout(doneResizing, 500);
+  }else {
+    return;
+  } 
 }
+
 function doneResizing(){
 	location.reload();
     console.log("resized");
