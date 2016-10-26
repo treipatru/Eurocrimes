@@ -15,9 +15,12 @@
 
   <!-- SHARING THUMBNAIL
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta property="og:image" content="img/fb-img.jpg"/>
+  <meta property="og:url"           content="http://theblacksea.eu/eurocrimes"/>
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="EUROCRIMES" />
+  <meta property="og:description"   content="Romania is the European country with the greatest number of its expats in prison in the EU, while Morocco has the highest number of prisoners. An international team of journalists across six nations with data from 25 countries has revealed these stats - and investigated why this is happening." />
+  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
 
-  <meta property="og:description" content="Romania is the European country with the greatest number of its expats in prison in the EU, while Morocco has the highest number of prisoners. An international team of journalists across six nations with data from 25 countries has revealed these stats - and investigated why this is happening." />
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -34,6 +37,15 @@
 
 </head>
 <body>
+  <!-- IMPORT FACEBOOK SDK, JUST TO DISPLAY A FUCKING LIKE BUTTON -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -261,7 +273,28 @@
           <p>Kid beggars turn to prostitution in Rome’s Termini station</p>
         </div></a>
       </div>
+    </div>
 
+  <!-- ELEVENTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns">
+        <div class="twelve columns">
+        <p>SHARE</p>
+        </div>
+        <div class="twelve columns">
+          <!-- TWITTER SHARE -->
+          <a href="https://twitter.com/share" class="twitter-share-button" data-size="small" data-text="Shock! Horror!" data-url="http://bit.ly/Eurocrimes" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <!-- LINKEDIN SHARE -->
+          <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+          <script type="IN/Share" data-url="http://bit.ly/Eurocrimes"></script>
+          <!-- FACEBOOK LIKE & SHARE -->
+          <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftheblacksea.eu%2Feurocrimes%2F&width=200&layout=standard&action=like&size=small&show_faces=false&share=true&height=20" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+          <!-- REDDIT SHARE
+          <script type="text/javascript" src="//www.redditstatic.com/button/button1.js"></script> -->
+        </div>
+      </div>
+      
       <div class="twelve columns">
         <hr>
         <p>TEAM</p>
@@ -270,7 +303,7 @@
         <p>Vlad Odobescu (Romania): text, data collection</p>
         <p>Michael Bird (Romania/UK): text, photos, data collection</p>
         <p>Cosmin Pojoranu (Romania): graphics</p>
-        <p>Andrei Mocanca (Romania): data visualization</p>
+        <p>Andrei Mocanca (Romania): web dev, data visualization</p>
         <p>Cecilia Ferrara (Italy): text</p>
         <p>With thanks to Inga Springe (Latvia), Giulio Rubino (Italy), Trine Smistrup (Netherlands)</p>
       </div>
@@ -289,7 +322,6 @@
         <p>This project was made with the support of <a href="http://www.journalismfund.eu/" target="_blank">Journalism Fund</a></p>
       </div>
     </div>
-
 
   </div>
 
