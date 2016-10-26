@@ -6,10 +6,10 @@
 
 
 function drawJailPop () {
-  var dataSet = [{"Romanian" : 2},
-  		     {"EU Expat" : 10},
-  		     {"Foreign" : 16},
-  		     {"Local" : 72}];
+  var dataSet = [{"Romanian" : 2},//
+  		     {"EU Expat" : 10},//
+  		     {"Foreign" : 16},//
+  		     {"Local" : 72}];//
 
   var peopleSquare = 1; //PEOPLE PER SQUARE
   var squarePadding = 20;
@@ -75,6 +75,8 @@ function drawJailPop () {
 			  .attr("class", "sq" + className + " jailPopSquares")
 			  .attr("x", getX())
 			  .attr("y", getY() + titleSize)
+			  .attr("rx", 0)
+			  .attr("ry", 0)
 			  .attr("width", squareSize)
 			  .attr("height", squareSize)
 			  .on("mouseover", mouseoverSq)
@@ -83,8 +85,8 @@ function drawJailPop () {
 
 		function getX () {
 			currentX += (squareSize + squarePadding);
-			if ( currentX + squareSize > boxWidth - internalMargins) {
-				currentX = 0 + internalMargins;
+			if ( currentX + squareSize > boxWidth) {
+				currentX = 0;
 				sqRow ++;
 				return currentX;
 			}else {
@@ -137,16 +139,30 @@ function drawJailPop () {
 
 	//REPOSITION GROUPS TO FIT
 	var prevTextW = 0;
+	var resetX = 0;
 	d3.select("#jailPopLegend").selectAll("g").each(function (d,i) {
-		var textWidth = d3.select(this).select("text").node().getBBox().width * 1 + 15;
+		var textWidth = d3.select(this).select("text").node().getBBox().width;
 		var nextElement = d3.select(this.nextElementSibling);
 
+		var curWidth = d3.select("#jailPopContainer").node().getBBox().width;
 
 		if (nextElement[0][0]) {
 		  var x = d3.transform(nextElement.attr("transform")).translate[0];
 		  var y = d3.transform(nextElement.attr("transform")).translate[1];
 		  
 		  x = prevTextW + x + textWidth;
+
+		  //CHECK IF LABELS ARE OVERFLOWING
+		  if (x + textWidth > curWidth) {
+		  	x = 0 + resetX;
+		  	resetX = squareSize + squarePadding + textWidth;
+		  	//ADD ROW AND RECALCULATE CONTAINER HEIGHT
+		  	sqRow ++;
+		  	y = y + (squareSize + squarePadding);
+		  	computedH = sqRow * (squareSize + squarePadding) + titleSize;
+			d3.select("#jailPopContainer").attr("height", (computedH) + margin.top + margin.bottom + titleSize);
+		  }
+
 		  prevTextW += textWidth;
 
 		  d3.select(this.nextElementSibling).attr("transform","translate(" + x +"," + y + ")");
@@ -162,9 +178,12 @@ function drawJailPop () {
   function mouseoverSq (){
     var currentSelection = d3.select(this);
     currentSelection.transition()
-    			  .duration(1000)
-    			  .ease("bounce")
-    			  .style("opacity","0.7");
+    			  .duration(250)
+    			  .delay(100)
+    			  .ease("cubic")
+    			  .style("opacity","0.5")
+    			  .attr("rx", 10)
+    			  .attr("ry", 10);
 
     var data = d3.select(this.parentNode).datum();
   }
@@ -173,9 +192,11 @@ function drawJailPop () {
     var currentSelection = d3.select(this);
 
     currentSelection.transition()
-    			  .duration(200)
+    			  .duration(250)
     			  .ease("cubic")
-    			  .style("opacity","1");
+    			  .style("opacity","1")
+    			  .attr("rx", 0)
+    			  .attr("ry", 0);
 
     d3.select("#tooltip").style("visibility", "hidden");
   }
@@ -198,7 +219,7 @@ function drawJailPop () {
     d3.selectAll(".sqInactive")
     	.selectAll("rect")
       .transition()
-      .duration(400)
+      .duration(200)
       .ease("cubic")
       .style("opacity", "0.2");
   }
