@@ -50,13 +50,14 @@ function drawJailPop () {
 	   .attr("class", "chartTitle")
 	   .attr("text-anchor","middle")
 	   .style("fill","#606062")
-	   .text("EU JAIL POPULATION BY ORIGIN");
+	   .text("EU PRISON TOTAL DOMINATED BY LOCALS (%)");
 
   	//MAKE GROUPS FOR DATA
   	var squares = svg.selectAll("g").data(dataSet)
 		  	     .enter()
 		  	   .append("g")
-		  	     .attr("id", function (d){return String(Object.keys(d)).replace(/ /g,"");});
+		  	     .attr("id", function (d){return String(Object.keys(d)).replace(/ /g,"");})
+		  	     .attr("class", "sqInactive");
 	
 	//SET NEGATIVE STARTING X
 	var currentX = -(squareSize + squarePadding);
@@ -77,7 +78,6 @@ function drawJailPop () {
 			  .attr("width", squareSize)
 			  .attr("height", squareSize)
 			  .on("mouseover", mouseoverSq)
-			  .on("mousemove", mousemoveSq)
 			  .on("mouseout", mouseoutSq);
 		}
 
@@ -162,31 +162,18 @@ function drawJailPop () {
   function mouseoverSq (){
     var currentSelection = d3.select(this);
     currentSelection.transition()
-    			  .duration(200)
+    			  .duration(1000)
     			  .ease("bounce")
     			  .style("opacity","0.7");
 
     var data = d3.select(this.parentNode).datum();
-
-    d3.select("#tooltip")
-      .style("visibility", "visible")
-      .html("<p>1% of Prisoners</p>")
-      // .html("<p>" + String(Object.keys(data)) + " - 1% Of Prisoners" +"</p>")
-      .style("top", function () { return (d3.event.pageY + 10)+"px";})
-      .style("left", function () { return (d3.event.pageX - 0)+"px";});
-  }
-
-  function mousemoveSq (d) {
-    d3.select("#tooltip")
-      .style("left", (d3.event.pageX + 20) + "px")
-      .style("top", (d3.event.pageY + 20) + "px");
   }
   
   function mouseoutSq() {
     var currentSelection = d3.select(this);
 
     currentSelection.transition()
-    			  .duration(100)
+    			  .duration(200)
     			  .ease("cubic")
     			  .style("opacity","1");
 
@@ -197,16 +184,23 @@ function drawJailPop () {
     var currentSelection = d3.select(this);
     var currentName = currentSelection.attr("id").replace(/ /g,"");
     var currentValue = d3.select("#" + currentName).selectAll("rect").size();
+    
+    //CHANGE TEXT OF LABEL 
     currentSelection.select("text")
     			  .text(currentValue + "%")
-    			  .style("font-weight","800");   
+    			  .style("font-size","0.9em")
+    			  .style("font-weight","900");
 
-    d3.select("#" + currentName)
-    .transition()
-    .duration(500)
-    .ease("bounce")
-    .style("opacity","0.3");
-    
+    //SET CURRENT SELECTION ACTIVE
+    d3.select("#jailPopContainer").select("#" + currentName).attr("class", "sqActive");
+
+    //EASE OUT INACTIVE SQUARES
+    d3.selectAll(".sqInactive")
+    	.selectAll("rect")
+      .transition()
+      .duration(400)
+      .ease("cubic")
+      .style("opacity", "0.2");
   }
 
   function mouseoutLabel (){
@@ -215,13 +209,19 @@ function drawJailPop () {
 
     currentSelection.select("text")
     			  .text(currentName)
+    			  .style("font-size", "0.7em")
     			  .style("font-weight","500");
 
-    d3.selectAll("#" + currentName.replace(/ /g,""))
-    	.transition()
-    	.duration(250)
-    	.ease("cubic")
-    	.style("opacity","1");
+    //EASE BACK IN INACTIVE SQUARES
+    d3.selectAll(".sqInactive").selectAll("rect")
+    	.attr("dx", ".35em")
+      .transition()
+      .duration(400)
+      .ease("cubic")
+      .style("opacity", "1");
+
+	//RESET ACTIVE GROUP
+      d3.selectAll(".sqActive").attr("class", "sqInactive");
   }
 
   render();
