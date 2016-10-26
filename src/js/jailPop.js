@@ -6,10 +6,10 @@
 
 
 function drawJailPop () {
-  var dataSet = [{"Romanian" : 2},//
-  		     {"EU Expat" : 10},//
-  		     {"Foreign" : 16},//
-  		     {"Local" : 72}];//
+  var dataSet = [{"Romanian" : 2},// 11400
+  		     {"Other EU" : 4},// 22234
+  		     {"Non EU" : 13},//  79822
+  		     {"Local" : 82}];//  506544
 
   var peopleSquare = 1; //PEOPLE PER SQUARE
   var squarePadding = 20;
@@ -181,7 +181,7 @@ function drawJailPop () {
     			  .duration(250)
     			  .delay(100)
     			  .ease("cubic")
-    			  .style("opacity","0.5")
+    			  .style("opacity","0.4")
     			  .attr("rx", 10)
     			  .attr("ry", 10);
 
