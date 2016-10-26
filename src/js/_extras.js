@@ -12,7 +12,7 @@
 //REFRESH ON RESIZE
 //-----------------------------------------------------------------------------
 var resizeId;
-var iniScrWidth = screen.width;console.log(iniScrWidth);
+var iniScrWidth = screen.width;
 
 function resizeRefresh () {
   clearTimeout(resizeId);
