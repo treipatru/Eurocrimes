@@ -735,5 +735,5 @@ path.chord {
   border-bottom: 1px solid #E2E2E2;
 }
 
-.chartTitle {font-size: 0.6em;}
+.chartTitle {font-size: 0.5em;}
 @media (min-width: 500px) {.chartTitle{font-size: 1em;}}
