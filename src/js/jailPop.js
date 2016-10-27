@@ -36,12 +36,6 @@ function drawJailPop () {
 	
 	squareSize = svg.attr("width")/100 + sqSizeProp;
 
-	//BACKGROUND
-	// svg.append("rect")
-	//    .attr("width", "100%")
-	//    .attr("height", "100%")
-	//    .style("fill", "#ededed");
-
 	//TITLE
 	svg.append("text")
 	   .attr("id","jailPopTitle")
