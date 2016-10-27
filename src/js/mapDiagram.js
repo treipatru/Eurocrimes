@@ -103,15 +103,6 @@ function drawMap () {
           .style("top", function () { return (d3.event.pageY + 10)+"px";})
           .style("left", function () { return (d3.event.pageX - 0)+"px";});
 
-
-          // var currentId = currentSelection.attr("id");String(currentId);
-          // var currentObj = currentSelection.data();
-          // var currentDiaspora = currentObj[0].diaspora;
-          // var number = currentDiaspora.Austria;
-
-
-          
-
       } else {
 
         currentSelection.style("opacity","0.8");
@@ -150,7 +141,7 @@ function drawMap () {
     function onClick() {
       var initialClass = d3.select("#"+this.id).attr("class");
 
-      //IF ALREADY ACTIVE, DISABLE ELSE MAKE ACTIVE
+      //IF ALREADY ACTIVE, DISABLE
       if (initialClass === "countryActive"){
         //DISABLE COUNTRY ACTIVE
         d3.select(this).attr("class", "countryEU");
@@ -160,15 +151,18 @@ function drawMap () {
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0);
         //DRAW COUNTRY TITLE
         d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
-
+        d3.select("#titleCount").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
+      
+      //ELSE MAKE ACTIVE
       }else{
 
         //FADE OUT COUNTRY NUMBERS
         d3.selectAll(".nrCountry").transition().duration(easingDuration).ease("cubic").style("opacity", 0).text("");
         //DISABLE COUNTRY ACTIVE
         d3.select(".countryActive").attr("class","countryEU");
-        //REMOVE COUNTRY TITLE
+        //REMOVE COUNTRY TITLE AND COUNT
         d3.select("#selectionTitle").transition().duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
+        d3.select("#titleCount").transition().delay(easingDuration/10).duration(easingDuration/2).ease("quad").style("fill", "#FFFFFF").remove();
         //SET COUNTRY ACTIVE
         d3.select(this).attr("class", "countryActive").transition().duration(easingDuration).ease("exp").style("fill","#F47F5E");
 
@@ -201,15 +195,28 @@ function drawMap () {
         //DISPLAY TITLE FOR SELECTED
         d3.select("#mapContainer")
           .append("text")
-            .style("opacity", 0)
-            .style("fill","#E7714A")
             .attr("id","selectionTitle")
-            .attr("font-family","Open Sans", "HelveticaNeue", "Helvetica Neue")
-            .attr("font-size","2.5em")
             .attr("x", 10)
             .attr("y", 50)
+            .style("opacity", 0)
+            .style("fill","#E7714A")
+            .style("text-anchor","left")
+            .style("font-size","2.5em")
             .transition().duration(easingDuration).ease("quad").style("opacity", 1)
             .text(activeCountry);
+        
+        //DISPLAY ACTIVE DIASPORA COUNT
+        d3.select("#mapContainer")
+          .append("text")
+          .attr("id","titleCount")
+          .attr("x", 13)
+          .attr("y", 75)
+          .style("text-anchor","left")
+          .style("font-size","0.6em")
+          .style("font-weight","700")
+          .style("fill", "#606062")
+          .transition().delay(easingDuration/2).duration(easingDuration*2).ease("quad").style("opacity", 0.8)
+          .text(d3.format(".2s")(activeDiaspora) + " Expats");
 
         //MAKE A COLOR SCALE
         var color = d3.scale.linear()
