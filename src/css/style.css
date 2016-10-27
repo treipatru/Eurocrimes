@@ -510,11 +510,11 @@ there.
 /* CARDS & TITLES
 /----------------------------------- */
 .card {
-  -webkit-box-shadow: 0px 10px 65px 5px rgba(224,224,224,1);
-  -moz-box-shadow: 0px 10px 65px 5px rgba(224,224,224,1);
-  box-shadow: 0px 10px 65px 5px rgba(224,224,224,1);
+  -webkit-box-shadow: 0px 5px 30px 5px rgba(240,240,240,1);
+  -moz-box-shadow: 0px 5px 30px 5px rgba(240,240,240,1);
+  box-shadow: 0px 5px 30px 5px rgba(240,240,240,1);
   padding: 1em 0 0.5em 0;
-  margin-bottom: 2.5em;
+  margin-bottom: 2em;
 }
 
 .card > div {
@@ -726,8 +726,8 @@ path.chord {
 
 /* JAIL POPULATION
 /----------------------------------- */
-#jailPopContainer {
-  fill: blue;
+#jailPop {
+  margin-bottom: 1em;
 }
 .sqRomanian {
   fill: #EE2F5A;
