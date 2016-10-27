@@ -430,8 +430,60 @@ there.
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------------------------------------------
+//
+//CUSTOM STYLES
+//
+//-------------------------------------------------------------------------- */
+
+
+
+
+
+/* GENERAL
+/----------------------------------- */
+#container{
+  margin: 0 auto;
+  width: 900px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+}
+
+.quote {
+  padding: 1em;
+  background: rgba(135, 187, 185, 0.1);
+}
+
+.infoBox {
+  display: block;
+}
+
+.infoBox p {
+  font-size: 0.6em;
+  margin-top: -1em;
+}
+
 /* TOOLTIP
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/----------------------------------- */
 #tooltip {
   color: white;
   opacity: .9;
@@ -452,6 +504,11 @@ there.
   margin: 0;
 }
 
+/* SOCIAL MEDIA
+/----------------------------------- */
+
+/* CARDS & TITLES
+/----------------------------------- */
 .card {
   -webkit-box-shadow: 0px 10px 65px 5px rgba(224,224,224,1);
   -moz-box-shadow: 0px 10px 65px 5px rgba(224,224,224,1);
@@ -464,6 +521,16 @@ there.
   padding: 0.5em 1.25em 0.5em 1.25em;
 }
 
+.cardTitle h2{
+  border-bottom: 1px solid #E2E2E2;
+}
+
+.chartTitle {font-size: 0.5em;}
+@media (min-width: 500px) {.chartTitle{font-size: 1em;}}
+
+
+/* FUNCTIONAL
+/----------------------------------- */
 .removeBelow {
   margin-bottom: 0!important;
   padding-bottom: 0!important;
@@ -475,6 +542,129 @@ there.
   padding-top: 0 !important;
 }
 
+.center {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  visibility: hidden;
+}
+
+.selectDisallow {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.disablePointer {
+  pointer-events: none;
+}
+
+.mouseOverTrigger {
+  stroke-width", 0)
+  fill: whit
+  opacity: 0.0;
+}
+
+.invisiText {
+  visibility: hidden;
+}
+
+.visiText {
+  visibility: visible;
+  font-weight: bold;
+}
+
+/*HIDE CONTAINER IN LOW RES*/
+.hideLow {display: none;} @media (min-width: 900px) {.hideLow{display: block;}}
+/*SHOW CONTAINER IN LOW RES*/
+.showLow {display: block;} @media (min-width: 900px) {.showLow{display: none;}}
+/*DIAGRAM TITLES IN LOW RES*/
+.lowRes { color: #c12600; font-size: 0.6em;}
+
+
+/* CHORD DIAGRAM
+/----------------------------------- */
+#chordDiagram {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+path.group {
+  fill-opacity: 1;
+}
+
+path.chord {
+  fill-opacity: .8;
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+
+
+/* FIFTH CARD (DRACULA)
+/----------------------------------- */
+#dracula{background: none;} 
+
+@media (min-width: 550px) {
+  #dracula {
+    background: url("../img/4-should-europe-be-scared-350px.jpg") no-repeat;
+    background-position: 96% 50%;
+  }
+  #dracula p{
+    margin-right: 25%;
+  }
+}
+
+
+/* MAP DIAGRAM
+/----------------------------------- */
+#mapDiagram {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 1em 0 1em 0;
+}
+
+.nrCountry {
+  text-anchor: middle;
+  font-size: 0.6em;
+  fill: "#000000";
+}
+
+.country{
+  fill: #e2e2e2;
+  stroke: #ededed;
+}
+
+.countryEU {
+  fill: #217A89;
+  stroke: #ededed;
+}
+
+.countryActive {
+  fill: #E7714A;
+  stroke: #ededed;
+}
+
+
+/* SEVENTH CARD (FEW MAJOR CRIMES)
+/----------------------------------- */
 .infoBit img{
   display: block;
   margin: auto;
@@ -494,168 +684,9 @@ there.
   border-top: 1px dotted grey;
 }
 
-.center {
-  display: block;
-  margin: auto;
-  text-align: center;
-}
-
-.anchor {
-  display: block;
-  position: relative;
-  visibility: hidden;
-}
-
-
-/*CHART INFO BOXES*/
-.infoBox {
-  display: block;
-}
-
-.infoBox p {
-  font-size: 0.6em;
-  margin-top: -1em;
-}
-
-.team p{
-  font-size: 0.6em;
-}
-
-.team img{
-    margin: 0 auto;
-    display: block;
-}
-.moreBit img{
-  display: block;
-  margin: auto;
-  padding: 0.5em;
-}
-
-.moreBit h6{
-  padding-right: 0.5em;
-}
-
-.moreBit p{
-  text-align: center;
-  padding: 1em;
-  font-size: 0.6em;
-}
-
-.moreBit h6 {
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.quote {
-  padding: 1em;
-  background: rgba(135, 187, 185, 0.1);
-}
-
-
-.mouseOverTrigger {
-  stroke-width", 0)
-  fill: whit
-  opacity: 0.0;
-}
-
-
-#dracula{background: none;} 
-
-@media (min-width: 550px) {
-  #dracula {
-    background: url("../img/4-should-europe-be-scared-350px.jpg") no-repeat;
-    background-position: 96% 50%;
-  }
-  #dracula p{
-    margin-right: 25%;
-  }
-}
-
-/*HIDE CONTAINER IN LOW RES*/
-.hideLow {display: none;}
-@media (min-width: 900px) {.hideLow{display: block;}}
-/*SHOW CONTAINER IN LOW RES*/
-.showLow {display: block;}
-@media (min-width: 900px) {.showLow{display: none;}}
-
-.lowRes {
-  color: #c12600;
-  font-size: 0.6em;
-}
-
-
-/* CHORD DIAGRAM
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-#chordDiagram {
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-
-#circle circle {
-  fill: none;
-  pointer-events: all;
-}
-path.group {
-  fill-opacity: 1;
-}
-path.chord {
-  fill-opacity: .8;
-  stroke: #000;
-  stroke-width: .25px;
-}
-#circle:hover path.fade {
-  display: none;
-}
-
-
-/* MAP DIAGRAM
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-#mapDiagram {
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 1em 0 1em 0;
-}
-
-#container{
-  margin: 0 auto;
-  width: 900px;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 2em;
-}
-
-.nrCountry {
-  text-anchor: middle;
-  font-size: 0.6em;
-  fill: "#000000";
-}
-
-.country{
-  fill: #e2e2e2;
-  stroke: #ededed;
-}
-
-.countryEU {
-  fill: #217A89;
-  stroke: #ededed;
-}
-.countryActive {
-  fill: #E7714A;
-  stroke: #ededed;
-}
-
-.graticule {
-  fill: none;
-  stroke: #ff00ff;
-  stroke-width: 1;
-  stroke-dasharray: 1,0,1;
-}
 
 /* BAR CHARTS
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/----------------------------------- */
 .bars p{
   font-weight: bold;
   text-align: center !important;
@@ -683,27 +714,6 @@ path.chord {
   font-weight: 500;
 }
 
-.invisiText {
-  visibility: hidden;
-}
-
-.visiText {
-  visibility: visible;
-  font-weight: bold;
-}
-
-.selectDisallow {
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.disablePointer {
-  pointer-events: none;
-}
-
 .grid {
   stroke: lightgrey;
   opacity: 1;
@@ -713,27 +723,57 @@ path.chord {
   stroke-width: 0;
 }
 
-/*JAILPOP*/
 
+/* JAIL POPULATION
+/----------------------------------- */
 #jailPopContainer {
   fill: blue;
 }
 .sqRomanian {
   fill: #EE2F5A;
 }
-.sqEUExpat {
+.sqOtherEU {
   fill: #F58634;
 }
-.sqForeign {
+.sqNonEU {
   fill: #8ABCB9;
 }
 .sqLocal {
   fill: #97989A;
 }
 
-.cardTitle h2{
-  border-bottom: 1px solid #E2E2E2;
+
+/* ELEVENTH CARD (IN-DEPTH)
+/----------------------------------- */
+.moreBit img{
+  display: block;
+  margin: auto;
+  padding: 0.5em;
 }
 
-.chartTitle {font-size: 0.5em;}
-@media (min-width: 500px) {.chartTitle{font-size: 1em;}}
+.moreBit h6{
+  padding-right: 0.5em;
+}
+
+.moreBit p{
+  text-align: center;
+  padding: 1em;
+  font-size: 0.6em;
+}
+
+.moreBit h6 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+/* TEAM
+/----------------------------------- */
+.team p{
+  font-size: 0.6em;
+}
+
+.team img{
+    margin: 0 auto;
+    display: block;
+}
