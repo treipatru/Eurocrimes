@@ -82,6 +82,7 @@ function drawChordDiagram () {
                  .data(chord.groups())
                .enter().append("svg:g")
                  .attr("class", "group")
+                 .attr("id",function(d) { return "ch" + rdr(d).gname; })
                  .on("mouseover", mouseOverGroup)
                  .on("mousemove", mouseMoveGroup)
                  .on("mouseout", mouseOutGroup)
@@ -133,25 +134,50 @@ function drawChordDiagram () {
       //GROUPS BEHAVIOR
       //------------------------------------
       function mouseOverGroup(d, i) {
-        d3.select("#tooltip")
+        //IF ACTIVE BUT NOT THIS SHOW RELATIONSHIP TOOLTIP
+        if (!d3.select("#gActive").empty() && d3.select(this).attr("id") !== "gActive") {
+
+          d3.select("#tooltip")
+            .style("opacity", 0)
+            .style("visibility", "visible")
+            .html(function fn () {return "This needs to show the same as the chord";})
+            .style("top", function () { return (d3.event.pageY + 50)+"px";})
+            .style("left", function () { return (d3.event.pageX - 130)+"px";});
+            showTooltip();}
+
+        //ELSE SHOW THIS STATS
+        else {
+          d3.select("#tooltip")
           .style("opacity", 0)
           .style("visibility", "visible")
           .html(groupTip(rdr(d)))
           .style("top", function () { return (d3.event.pageY + 50)+"px";})
           .style("left", function () { return (d3.event.pageX - 130)+"px";});
 
-        d3.select("#tooltip")
-          .transition()
-          .duration(400)
-          .ease("cubic")
-            .style("opacity", 1);
+          showTooltip();}
 
-        d3.select(this).select("text").style("font-weight","900");
+        function showTooltip () {
+          d3.select("#tooltip")
+            .transition()
+            .duration(400)
+            .ease("cubic")
+            .style("opacity", 1);}
+
+
+
+        //GENERAL MOUSEOVER EFFECT IS BOLD
+        d3.select(this).select("text").style("font-weight", "800");
+
+        //IF NOTHING IS ACTIVE ALSO INCREASE SIZE
+        if (d3.select("#gActive").empty()) {
+          d3.select(this).select("text").style("font-size", "0.8em");
+        }
 
          chordPaths.classed("fade", function(p) {
            return p.source.index != i && p.target.index != i;
          });
       }
+
 
       function mouseMoveGroup (d) {
         d3.select("#tooltip")
@@ -159,21 +185,58 @@ function drawChordDiagram () {
           .style("top", (d3.event.pageY + 20) + "px");
       }
 
-      function mouseOutGroup (d) {
+
+      function mouseOutGroup (d, i) {
+        //HIDE TOOLTIP ANYWAY
         d3.select("#tooltip").style("visibility", "hidden");
-        d3.selectAll(".fade")
-          .transition()
-          .duration(500)
-          .ease("cubic")
-          .style("opacity", 0.8);
-        d3.selectAll("fade")
-          .style("visibility", "hidden")
-          .classed("fade", false);
-        d3.select(this).select("text").style("font-weight","500");
+
+        //IF THIS IS ACTIVE
+        if (d3.select(this).attr("id") === "gActive") {}
+
+        else {
+          d3.select(this).select("text").style("font-size", "0.6em");}
+
+        //IF ACTIVE EXISTS KEEP CHORDS SELECTED
+        if (d3.select(this).attr("id") === "gActive") {
+          //KEEP CHORDS HIDDEN
+          d3.selectAll(".fade").style("visibility", "hidden");}
+
+        else {
+          d3.selectAll(".fade")
+              .transition()
+              .duration(500)
+              .ease("cubic")
+              .style("opacity", 0.8);
+            d3.selectAll("fade")
+              .style("visibility", "hidden")
+              .classed("fade", false);
+            d3.select(this).select("text").style("font-weight","500");}
+
       }
 
+
       function onClickGroup (d, i) {
-        //Keep chord selected
+
+        if (d3.select("#gActive").empty()) {
+          //SELECT THIS IF THERE'S NO ACTIVE
+          d3.select(this).attr("id", "gActive");
+          //STYLE TEXT
+          d3.select(this).select("text").style("font-size", "0.8em");}
+        
+        //IF THIS IS ACTIVE
+        else if (d3.select(this).attr("id") === "gActive"){
+          d3.select(this).attr("id",null).select("text").style("font-size", "0.6em");
+          d3.selectAll(".fade").style("visibility", "visible");}
+
+        //IF ACTIVE EXISTS BUT ITS NOT THIS
+        else if (!d3.select("#gActive").empty() && d3.select(this).attr("id") !== "gActive") {
+          d3.select("#gActive").select("text")
+            .transition().duration(100).ease("cubic").style("fill", "red")
+            .transition().duration(100).ease("cubic").style("fill", "white")
+            .transition().duration(100).ease("cubic").style("fill", "red")
+            .transition().duration(100).ease("cubic").style("fill", "white")
+            .transition().duration(100).ease("cubic").style("fill", "black");}
+
       }
 
 
