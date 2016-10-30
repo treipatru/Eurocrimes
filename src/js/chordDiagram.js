@@ -48,9 +48,11 @@ function drawChordDiagram () {
                    .ordinal()
                    .domain(d3.range(28))
                    .range(
-                    ["#dc448f", "#449a2b", "#8132ab", "#a469dc", "#3a7524", "#b542a8", "#449357", "#4d47af", "#a97a20", "#5c75e3",
-                     "#d05b23", "#6282ca", "#ce3c37", "#318d76", "#d03f5f", "#315f2b", "#9b2e6b", "#798842", "#724e95", "#5c5d1b",
-                     "#b2659a", "#8b6a34", "#3e6ca1", "#b86d3e", "#8a394a", "#8d3f1c", "#bc615d"]);
+                    ["#a9bccd", "#d3b54d", "#737fd7", "#9dc067", "#d78ada", "#548d42",
+                     "#d7609d", "#62c78d", "#e87579", "#55799f", "#d04b74", "#52aabf",
+                     "#ce7144", "#71a5e2", "#ad772e", "#9966ac", "#85822d", "#d0acde",
+                     "#c1b474", "#69cec3", "#e3a471", "#5b886f", "#b85a59", "#afb998",
+                     "#c47495", "#98765b", "#937c94", "#dca8a3"]);
 
       var chord = d3.layout
                     .chord()
@@ -108,6 +110,7 @@ function drawChordDiagram () {
                           .attr("class", "chord")
                           .style("stroke", function(d) { return d3.rgb(fill(d.target.index)).darker(); })
                           .style("fill", function(d) { return fill(d.target.index); })
+                          .style("opacity","0.8")
                           .attr("d", d3.svg.chord().radius(r0))
                           .on("mouseover", mouseOverChord)
                           .on("mousemove", mouseMoveChord)
@@ -208,7 +211,6 @@ function drawChordDiagram () {
          d3.selectAll(".chord").filter(".fade").transition()
               .delay(200)
               .duration(100)
-              // .ease("cubic")
               .style("opacity", "0");
       }
 
