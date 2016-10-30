@@ -123,8 +123,8 @@ function drawChordDiagram () {
       }
 
       function groupTip (d) {
-        var p = d3.format(".1%"), q = d3.format(",.3r");
-        return d.gname + " has " +q(d.gvalue) + " citizens in EU prisons" + 
+        var p = d3.format(".1%"), q = d3.format(",");
+        return d.gname + " has " + q(d.gvalue) + " citizens in EU prisons" + 
         "<br/>" + "This is " + p(d.gvalue/d.mtotal) + " of the total EU expat prison population.";
       }
 
@@ -255,7 +255,7 @@ function drawChordDiagram () {
           d3.select(this).attr("id", "gActive");
           //STYLE TEXT stroke="red" stroke-width="2"
           d3.select(this).select("text").style("font-size", "0.8em");
-          d3.select(this).select("path").style("stroke", "#606062").style("stroke-width", "3");}
+          d3.select(this).select("path").style("stroke", "#424242").style("stroke-width", "2");}
         
         //IF THIS IS ACTIVE
         else if (d3.select(this).attr("id") === "gActive"){
