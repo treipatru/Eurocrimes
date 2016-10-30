@@ -116,7 +116,7 @@ function drawChordDiagram () {
       function chordTip (d) {
         var p = d3.format(".2%");
         return "Prisoner Relationship<br/>" + d.sname + " &rightarrow; " + d.tname + " : " + d.svalue + 
-        (d.sname === d.tname ? "": ("<br/>" + d.sname + " &leftarrow; " +d.tname + " : " + d.tvalue));
+        (d.sname === d.tname ? "": ("<br/>" + d.tname + " &rightarrow; " +d.sname + " : " + d.tvalue));
       }
 
       function groupTip (d) {
@@ -134,13 +134,41 @@ function drawChordDiagram () {
       //GROUPS BEHAVIOR
       //------------------------------------
       function mouseOverGroup(d, i) {
+
         //IF ACTIVE BUT NOT THIS SHOW RELATIONSHIP TOOLTIP
         if (!d3.select("#gActive").empty() && d3.select(this).attr("id") !== "gActive") {
+
+          //GET START DATA
+          var startIndex = d3.select("#gActive").data()[0].index;
+          var startName = d3.select("#gActive").text();
+          var sourceVal;
+          //GET END DATA
+          var endIndex = d3.select(this).data()[0].index;
+          var endName = d3.select(this).text();
+          var targetVal;
+
+          var selectedChord = d3.select("#chordContainer")
+                      .selectAll(".chord").filter(function (d){
+                        if (d.source.index === startIndex && d.target.index === endIndex ||
+                          d.source.index === endIndex && d.target.index === startIndex) {
+                          return d;}})
+                      .data();
+
+          if (selectedChord.length < 1) {
+            sourceVal = 0;
+            targetVal = 0;}
+          else {
+            sourceVal = selectedChord[0].source.value;
+            targetVal = selectedChord[0].target.value;
+          }
 
           d3.select("#tooltip")
             .style("opacity", 0)
             .style("visibility", "visible")
-            .html(function fn () {return "This needs to show the same as the chord";})
+            .html(function fn () {
+              return "Prisoner Relationship<br/>" + 
+                     startName + " &rightarrow; " + endName + ": " + sourceVal + "<br/>"+
+                     endName + " &rightarrow; " + startName + ": " + targetVal;})
             .style("top", function () { return (d3.event.pageY + 50)+"px";})
             .style("left", function () { return (d3.event.pageX - 130)+"px";});
             showTooltip();}
@@ -176,6 +204,12 @@ function drawChordDiagram () {
          chordPaths.classed("fade", function(p) {
            return p.source.index != i && p.target.index != i;
          });
+
+         d3.selectAll(".chord").filter(".fade").transition()
+              .delay(200)
+              .duration(100)
+              // .ease("cubic")
+              .style("opacity", "0");
       }
 
 
@@ -191,27 +225,24 @@ function drawChordDiagram () {
         d3.select("#tooltip").style("visibility", "hidden");
 
         //IF THIS IS ACTIVE
-        if (d3.select(this).attr("id") === "gActive") {}
-
-        else {
-          d3.select(this).select("text").style("font-size", "0.6em");}
-
-        //IF ACTIVE EXISTS KEEP CHORDS SELECTED
         if (d3.select(this).attr("id") === "gActive") {
-          //KEEP CHORDS HIDDEN
+          //KEEP HIDDEN CHORDS INVISIBLE
           d3.selectAll(".fade").style("visibility", "hidden");}
 
         else {
+          d3.select(this).select("text").style("font-size", "0.6em");
+
+          //MAKE HIDDEN CHORDS VISIBLE
           d3.selectAll(".fade")
               .transition()
-              .duration(500)
-              .ease("cubic")
+              .delay(100)
+              .duration(100)
               .style("opacity", 0.8);
             d3.selectAll("fade")
               .style("visibility", "hidden")
               .classed("fade", false);
             d3.select(this).select("text").style("font-weight","500");}
-
+            
       }
 
 
@@ -220,12 +251,14 @@ function drawChordDiagram () {
         if (d3.select("#gActive").empty()) {
           //SELECT THIS IF THERE'S NO ACTIVE
           d3.select(this).attr("id", "gActive");
-          //STYLE TEXT
-          d3.select(this).select("text").style("font-size", "0.8em");}
+          //STYLE TEXT stroke="red" stroke-width="2"
+          d3.select(this).select("text").style("font-size", "0.8em");
+          d3.select(this).select("path").style("stroke", "#606062").style("stroke-width", "3");}
         
         //IF THIS IS ACTIVE
         else if (d3.select(this).attr("id") === "gActive"){
           d3.select(this).attr("id",null).select("text").style("font-size", "0.6em");
+          d3.select(this).select("path").style("stroke", "none");
           d3.selectAll(".fade").style("visibility", "visible");}
 
         //IF ACTIVE EXISTS BUT ITS NOT THIS
@@ -243,18 +276,20 @@ function drawChordDiagram () {
       //CHORDS BEHAVIOR
       //------------------------------------
       function mouseOverChord (d) {
-        //FILL SHAPE 100%
-        d3.select(this)
-        .transition()
-        .duration(250)
-        .ease("cubic")
-        .style("fill-opacity", 1);
-        //VISIBLE TOOLTIP
-        d3.select("#tooltip")
-        .style("visibility", "visible")
-        .html(chordTip(rdr(d)))
-        .style("top", function () { return (d3.event.pageY + 50)+"px";})
-        .style("left", function () { return (d3.event.pageX - 130)+"px";});
+        if (!d3.select("#gActive").empty()) {
+          //FILL SHAPE 100%
+          d3.select(this)
+          .transition()
+          .duration(250)
+          .ease("cubic")
+          .style("fill-opacity", 1);
+          //VISIBLE TOOLTIP
+          d3.select("#tooltip")
+          .style("visibility", "visible")
+          .html(chordTip(rdr(d)))
+          .style("top", function () { return (d3.event.pageY + 50)+"px";})
+          .style("left", function () { return (d3.event.pageX - 130)+"px";});}
+
       }
 
       function mouseMoveChord (d) {
