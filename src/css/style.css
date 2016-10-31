@@ -482,6 +482,7 @@ there.
   margin-top: -1em;
 }
 
+
 /* TOOLTIP
 /----------------------------------- */
 #tooltip {
@@ -504,8 +505,10 @@ there.
   margin: 0;
 }
 
+
 /* SOCIAL MEDIA
 /----------------------------------- */
+
 
 /* CARDS & TITLES
 /----------------------------------- */
@@ -608,12 +611,12 @@ path.group {
 
 path.chord {
   fill-opacity: .8;
-  stroke: #000;
+  stroke: #FFF;
   stroke-width: .25px;
 }
 
 #circle:hover path.fade {
-  display: none;
+  /*display: none;*/
 }
 
 
@@ -728,6 +731,7 @@ path.chord {
 /----------------------------------- */
 #jailPop {
   margin-bottom: 1em;
+  background-color: #f2f2f2;
 }
 .sqRomanian {
   fill: #EE2F5A;

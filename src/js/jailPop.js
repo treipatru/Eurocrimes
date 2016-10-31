@@ -74,6 +74,7 @@ function drawJailPop () {
 			  .attr("width", squareSize)
 			  .attr("height", squareSize)
 			  .on("mouseover", mouseoverSq)
+			  .on("mousemove", mousemoveSq)
 			  .on("mouseout", mouseoutSq);
 		}
 
@@ -172,21 +173,31 @@ function drawJailPop () {
   function mouseoverSq (){
     var currentSelection = d3.select(this);
     currentSelection.transition()
-    			  .duration(250)
-    			  .delay(100)
+    			  .duration(200)
     			  .ease("cubic")
-    			  .style("opacity","0.4")
-    			  .attr("rx", 10)
-    			  .attr("ry", 10);
+    			  .style("opacity","0.7");
+
+    d3.select("#tooltip")
+	.style("visibility", "visible")
+	.html("<p>1%"+"</p>")
+	.style("top", function () { return (d3.event.pageY + 10)+"px";})
+	.style("left", function () { return (d3.event.pageX - 0)+"px";});
 
     var data = d3.select(this.parentNode).datum();
+  }
+
+  function mousemoveSq (d) {
+    d3.select("#tooltip")
+      .style("left", (d3.event.pageX + 20) + "px")
+      .style("top", (d3.event.pageY + 20) + "px");
   }
   
   function mouseoutSq() {
     var currentSelection = d3.select(this);
 
     currentSelection.transition()
-    			  .duration(250)
+    			  .duration(100)
+    			  .delay(100)
     			  .ease("cubic")
     			  .style("opacity","1")
     			  .attr("rx", 0)
