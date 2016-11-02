@@ -19,7 +19,7 @@ function drawJailPop () {
   var titleSize = 20;//TITLE HEIGHT
 
   //DYNAMIC WIDTH
-  var margin = {top: 20, left: 0, bottom: 20, right: 35};
+  var margin = {top: 30, left: 0, bottom: 20, right: 35};
   var boxWidth = parseInt(d3.select("#jailPop").style("width")),
       boxWidth = boxWidth - margin.left - margin.right,
     	boxHeight = margin.top + margin.bottom;
