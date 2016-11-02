@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Eurocrimes</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SHARING THUMBNAIL
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta property="og:url"           content="http://theblacksea.eu/eurocrimes"/>
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Romania is the European country with the greatest number of its expats in prison in the EU. An international team of journalists across six nations with data from 25 countries has revealed these stats - and investigated why this is happening." />
+  <meta property="og:image"         content="http://theblacksea.eu/eurocrimes/img/fb-img.jpg" />
+
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+
+</head>
+<body>
+  <!-- IMPORT FACEBOOK SDK, JUST TO DISPLAY A LIKE BUTTON -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+
+
+  <!-- TITLE
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row">
+      <div class="twelve columns" id="pageHeader">
+        <div class="twelve columns" id="pageTitle"><img class="u-max-full-width" src="./img/0-logo.png" alt="EUROCRIMES"></div>
+        <p>Romania is the European country with the greatest number of its expats in prison in the EU.</p>
+        <p>An international team of journalists across six nations with data from 25 countries has revealed these stats - and investigated why this is happening.</p>
+        <p class ="lowRes showLow">Some of the data visualizations are not displayed because there is not enough screen space. Try switching to landscape or load this page from another device.</p>
+              <div class="row">
+        <div class="twelve columns socialMedia">
+          <!-- TWITTER SHARE -->
+           <a href="https://twitter.com/share" class="twitter-share-button" data-size="small" data-text="Romania is European nation with most expats in prison in EU, Morocco highest in prisoners, estimates reveal" data-url="http://bit.ly/Eurocrimes" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <!-- FACEBOOK LIKE & SHARE -->
+          <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Ftheblacksea.eu%2Feurocrimes%2F&width=350&layout=standard&action=like&size=small&show_faces=false&share=true&height=20" width="350" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+
+
+
+  <!-- FIRST CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2>FOREIGN PRISONERS ACROSS THE EU ESTIMATE</h2>
+      </div>
+      <div class="twelve columns">
+        <img src="./img/1-top-5-countries.jpg" alt="Top Nationalities Imprisoned in EU" class="u-max-full-width">
+      </div>
+    </div>
+
+
+
+
+  <!-- SECOND CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card hideLow">
+      <div class="twelve column cardTitle removeBelow">
+        <h2 class="">EU EXPATS IMPRISONED ESTIMATE
+        <img class=".u-pull-right" src="img/interact.png" alt="Interact" width="25" height="30">
+        </h2>
+      </div>
+      <div>
+        <div class="twelve columns infoBox removeAbove" id="chordInfo">
+          <p>Explore the chord diagram to find out more about foreign nationals in EU prisons. Select a country to see where its diaspora is imprisoned</p>
+        </div>
+        <div class="twelve column" id="chordDiagram"></div>
+      </div>
+    </div>
+
+
+
+
+  <!-- THIRD CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2 class="removeBelow">WHAT ABOUT ROMANIANS?</h2>
+      </div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="./img/2-highlight-11400.jpg" alt="11400 Romanians in EU jails">
+      </div>
+      <div class="twelve columns" >
+        <p>Around 11500 Romanians were in jails in EU member states in 2015 (France: 2014), according to data requested from 25 member states</p>
+        <p>This is journalistic, not academic research, and is an estimate of the real number, because many countries have different reporting strategies. For an in-depth look into the methodology, <a href="http://www.theblacksea.eu/index.php?idT=86&idC=96&idRec=1237&recType=story" target="_blank">click here</a>.</p>
+      </div>
+      <div class="twelve columns"><img class="u-max-full-width center" src="img/3-ro-imprisoned-abroad-home.jpg" alt="Romanian prisoners home & abroad"></div>
+      <div class="twelve columns">
+        <p>There were 28334 Romanians in Prison in Romania and around 11500 in the EU. The crime rate is around three times higher (0.39 per cent) for Romanians abroad than Romanians at home (0.13 per cent)</p>
+      </div>
+    </div>
+
+
+
+
+  <!-- FOURTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2 class="removeBelow">SHOULD EUROPE BE SCARED OF ROMANIANS?</h2>
+      </div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/5-1236-ratio.jpg" alt="1 in 236 expats imprisoned is Romanian."></div>
+        <div class="twelve columns" id="dracula">
+          <p>No. There are 2.9 million of Romanians living outside of their home country in the EU</p>
+          <p>They are the second largest expat population in the EU - after Poland</p>
+          <p>There is no crime wave from Romania</p>
+          <p>Only one in every 256 Romanian expats is in jail</p>
+        </div>
+    </div>
+
+
+
+
+  <!-- FIFTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card hideLow">
+      <div class="twelve columns cardTitle removeBelow">
+        <h2>MIGRATION IN THE EU
+        <img class=".u-pull-right" src="img/interact.png" alt="Interact" width="25" height="30">
+        </h2>
+      </div>
+      <div>
+        <div class="twelve columns infoBox removeAbove" id="mapInfo">
+          <p>Explore the map to see migration relationships across the EU. Select a country to view where its diaspora is going</p>
+        </div>
+        <div class="row">
+          <div class="twelve columns" id="mapDiagram"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <!-- SIXTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2>FEW MAJOR CRIMES</h2>
+      </div>
+      <div class="row">
+        <div class="six columns infoBit">
+          <img src="img/6-p1.jpg" class="u-max-full-width">
+          <p>Romanians are mostly convicted for petty crime, such as shoplifting, burglary and mugging</p></div>
+        <div class="six columns infoBit">
+          <img src="img/6-p2.jpg" class="u-max-full-width">
+          <p>Most convicts are poor and many suffer discrimination at home and abroad</p></div>
+      </div>
+      <div class="row">
+        <div class="six columns infoBit">
+          <img src="img/6-p3.jpg" class="u-max-full-width">
+          <p>Many also commit the same crime multiple times - which means they often return to prison for a series of minor incidents</p></div>
+        <div class="six columns infoBit">
+          <img src="img/6-p4.jpg" class="u-max-full-width">
+          <p>However there are gangs involved in online fraud, human trafficking, extortion and blowing up ATM machines</p></div>
+      </div>
+    </div>
+
+
+
+
+  <!-- SEVENTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card" id="poverty">
+      <div class="twelve columns cardTitle">
+        <h2>POVERTY IS A BIG CAUSE
+        <img class=".u-pull-right" src="img/interact.png" alt="Interact" width="25" height="30">
+        </h2>
+      </div>
+      <div class="twelve">
+        <p>Poor education, lack of social mobility, and low incomes in Romania drive many to seek fortune abroad. But instead some turn to crime. Many Romanians who are law-abiding at home, become criminals abroad </p>
+        <p>These charts show how there is an inverse relationship between the number of criminals abroad, and the average income in their own nation</p>
+        <p>When we look at the number of criminals as a percentage of their expat population, Romania does not come in the top spot - that belongs to Lithuania</p>
+      </div>
+      <div class="six columns bars" id="prisonersWidth">
+        <p>Expats in jail per country of origin(&percnt;)</p>
+        <div id="barPrisoners"></div>
+      </div>
+      <div class="six columns bars" id="incomeWidth">
+        <p>Average income per country of origin(&euro;)</p>
+        <div id="barIncome"></div>
+      </div>
+    </div>
+
+
+
+
+  <!-- EIGHTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2 class="removeBelow">BUT THIS IS EXPENSIVE</h2>
+      </div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/10-highlight-99-eur.jpg" alt="99 EUR"></div>
+      <div class="twelve">
+        <p>The average amount spent per day on a European prisoner is 99&euro;, according to the Council of Europe</p>
+        <p>Therefore the cost of Romanians in jails in the EU is around 400 million Euro per year</p>
+      </div>
+    </div>
+
+
+
+
+  <!-- NINTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2 class="removeBelow">EU PRISON TOTAL DOMINATED BY LOCALS
+        <img class=".u-pull-right" src="img/interact.png" alt="Interact" width="25" height="30">
+        </h2>
+      </div>
+      <div class="twelve columns removeAbove"><img class="u-max-full-width" src="img/7-11-la-suta.png" alt="11%"></div>
+      <div class="row twelve">
+        <p>EU expat prisoners count for around 33,600 or 5% of the total prisoners in the EU - so remain a minority.</p>
+        <p>This is data from 2014 against our data on Romania from 2015, taking into account our variables. So this is only a broad estimate.</p>
+      </div>
+      <div class="row twelve columns">
+        <div id="jailPop"></div>
+      </div> 
+      <div class="twelve">
+        <p>The size of the prison population across the 28 states that have been or became EU members has remained almost static between 2002 and 2014. This oscillated between 600,000 and 650,000 for every year, according to Council of Europe figures</p>
+        <p>This reveals that changes in the migrant population across the EU in the last 14 years have not led to an increase in convictions</p>
+        <p class="quote">“There are so many different forms of immigration and waves of people who migrate and under different circumstances and how well received they are in society or how prepared that society is, so it’s impossible to say whether this leads to less or more crime. We have to look at circumstances and different conditions in which immigration is taking place. It can lead to both outcomes.” Christian Walburg, doctor in Criminal Science at Westphalian Wilhelm University, Munster.</p>
+      </div>
+    </div>
+
+
+
+
+  <!-- TENTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns cardTitle">
+        <h2>IN-DEPTH</h2>
+      </div>
+      <div class="twelve columns">
+        <p>We have looked behind these statistics to analyse why Romania and Lithuania have come top in the EU crime stats</p>
+        <p>From on the ground reportage in Italy, Spain, Romania, Germany, Lithuania and the UK, we present features about victims of human trafficking and drug addiction, interviews with begging gangs, thieves, career criminals, police officers, criminologists, charity workers and mafia experts, who have helped us wrestle with the problems and the solutions.</p>
+      </div>
+      <div class="row twelve columns">
+        <a href="http://theblacksea.eu/index.php?idT=88&idC=88&idRec=1238&recType=story"><div class="four columns moreBit">
+          <img src="img/thumbs1.jpg" class="u-max-full-width">
+          <h6>“It is so painful to know we are victims”</h6>
+          <p>Trafficked girls from Romania to Spain reveal path from tragedy to recovery</p>
+        </div></a>
+        <a href="http://theblacksea.eu/index.php?idT=88&idC=88&idRec=1239&recType=story"><div class="four columns moreBit">
+          <img src="img/thumbs2.jpg" class="u-max-full-width">
+          <h6>The EU doesn’t really know what Lithuanians are</h6>
+          <p>Why is the Baltic state the EU nation with the highest percentage of expats in jail?</p>
+        </div></a>
+        <a href="http://www.theblacksea.eu/index.php?idT=88&idC=88&idRec=1240&recType=story"><div class="four columns moreBit">
+          <img src="img/thumbs3.jpg" class="u-max-full-width">
+          <h6>Expat Romanians: their own worst enemy</h6>
+          <p>How Romania topped prisoner numbers in Italy - and how this is changing</p>
+        </div></a>
+      </div>
+    </div>
+
+  <!-- ELEVENTH CARD
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="row card">
+      <div class="twelve columns">
+        <p>TEAM</p>
+      </div>
+      <div class="six columns team">
+        <p>Vlad Odobescu (Romania): text, data collection</p>
+        <p>Michael Bird (Romania/UK): text, photos, data collection</p>
+        <p>Cosmin Pojoranu (Romania): graphics</p>
+        <p>Andrei Mocanca (Romania): web dev, data visualization</p>
+        <p>Cecilia Ferrara (Italy): text</p>
+        <p>With thanks to Inga Springe (Latvia), Giulio Rubino (Italy), Trine Smistrup (Netherlands)</p>
+      </div>
+      <div class="six columns team">
+        <p>Feliciano Tisera (Spain): text</p>
+        <p>Sorina Vazelina (Romania): illustrations</p>
+        <p>Paulius Ramanauskas (Lithuania): text</p>
+        <p>Šarūnas Černiauskas (Lithuania): text</p>
+        <p>Sigute Limontaite (UK/Germany): text</p>
+      </div>
+      <div class="twelve columns team">
+        <hr>
+        <img class="u-max-full-width" src="img/journo-fund-eu.jpg" alt="Journalism Fund EU">
+      </div>
+      <div class="twelve columns team center">
+        <p>This project was made with the support of <a href="http://www.journalismfund.eu/" target="_blank">Journalism Fund</a></p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <!-- TOOLTIP
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div id="tooltip"></div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/d3.v3.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/topojson.v1.min.js"></script>
+  <script src="js/graphs.js"></script>
+  <script>
+    window.onload = init();
+
+    function init (){
+      drawChordDiagram();
+      drawMap();
+      drawBarPrisoners();
+      drawBarIncome();
+      drawJailPop();
+    }
+  </script>
+
+</body>
+</html>
